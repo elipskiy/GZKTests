@@ -87,7 +87,7 @@ public class DriverWrapper {
 
 
     //******************************************************************************************************************
-    public void  clickByXpath(String xpath, int timeout){
+    public void clickByXpath(String xpath, int timeout){
         WebElement element = driver.findElement(By.xpath(xpath));//добавить ожидание
         log.info(String.format("Элемент по xpath = %s найден", xpath));
         element.click();
@@ -146,7 +146,7 @@ public class DriverWrapper {
 
     //******************************************************************************************************************
     public String getPageTitle(){
-        String pageTitle = driver.getTitle();
+        String pageTitle = driver.getTitle().trim();
         log.info(String.format("Title страницы = %s", pageTitle));
         return pageTitle;
 
@@ -183,6 +183,11 @@ public class DriverWrapper {
     public String getCurrentUrl(){
         String url = driver.getCurrentUrl();
         return url;
+    }
+
+    //******************************************************************************************************************
+    public void goBack() {
+        driver.navigate().back();
     }
 
     //******************************************************************************************************************
