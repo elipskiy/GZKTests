@@ -22,6 +22,7 @@ public class VlNcaBy_CadastralCostLangRBScreen {
     //--------Xpath----------
     private static final String BY_CADASTRAL_NUMBER_PARCEL_LANG_RADIO_BTN = "//input[@id='search_type_1']";
     private static final String BY_LOCALITY_ADDRESS_RADIO_BTN = "//input[@id='search_type_2']";
+    private static final String BY_GARDENER_PARTNERSHIP_RADIO_BTN = "//input[@id='search_type_3']";
     private static final String BY_LOCALITY_ZONE_NUM_RADIO_BTN = "//input[@id='search_type_5']";
     private static final String START_SEARCH_BTN = "//*[contains(text(), 'Начать поиск')]";
     //Начать поиск
@@ -37,6 +38,10 @@ public class VlNcaBy_CadastralCostLangRBScreen {
 
     public void selectLocalityZoneNum(){
         wrapper.clickByXpath(BY_LOCALITY_ZONE_NUM_RADIO_BTN);
+    }
+
+    public void selectGardenerPartnerShip(){
+        wrapper.clickByXpath(BY_GARDENER_PARTNERSHIP_RADIO_BTN);
     }
 
     public VlNcaBy_CadastralNumberParcelLangScreen goToVlNcaBy_CadastralNumberParcelLangScreen(){

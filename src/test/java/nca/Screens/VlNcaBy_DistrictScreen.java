@@ -21,6 +21,7 @@ public class VlNcaBy_DistrictScreen {
 
     //--------Xpath----------
     private static final String MINSK_DROP_DOWN = "//option[@value='17030']";
+    private static final String BARANOVICHY_DROP_DOWN = "//option[@value='2']";
     private static final String NEXT_BTN = "//*[contains(text(), 'Далее')]";
     private static final String START_SEARCH_BTN = "//*[contains(text(), 'Начать поиск')]";
     //--------Xpath End------
@@ -29,8 +30,17 @@ public class VlNcaBy_DistrictScreen {
         wrapper.clickByXpath(MINSK_DROP_DOWN);
     }
 
+    public void selectBaranovichyDistrict(){
+        wrapper.clickByXpath(BARANOVICHY_DROP_DOWN);
+    }
+
     public VlNcaBy_ExactAddressScreen goToVlNcaBy_ExactAddressScreen(){
         wrapper.clickByXpath(NEXT_BTN);
         return new VlNcaBy_ExactAddressScreen(wrapper.getDriver());
+    }
+
+    public VlNcaBy_GardenerPartnershipScreen goToVlNcaBy_GardenerPartnershipScreen(){
+        wrapper.clickByXpath(NEXT_BTN);
+        return new VlNcaBy_GardenerPartnershipScreen(wrapper.getDriver());
     }
 }

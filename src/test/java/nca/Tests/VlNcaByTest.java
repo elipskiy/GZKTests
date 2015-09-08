@@ -73,6 +73,25 @@ public class VlNcaByTest extends BaseTest {
         Assert.assertEquals(actualResult, true);
     }
 
+    @Test(priority = 0)
+    public void CadastralCostLangRB_ByGardenerNamePartnership() throws IOException, InterruptedException{
+
+        String brestskaya = "Брестская";
+
+        VlNcaBy_IndexScreen indexScreen = (new VlNcaBy_IndexScreen(driver));
+        VlNcaBy_CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        cadastralCostLangRBScreen.selectGardenerPartnerShip();
+        VlNcaBy_DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
+        districtScreen.selectBaranovichyDistrict();
+        VlNcaBy_GardenerPartnershipScreen gardenerPartnershipScreen = districtScreen.goToVlNcaBy_GardenerPartnershipScreen();
+        gardenerPartnershipScreen.selectStAviatorGardener();
+        VlNcaBy_DescriptionParcelScreen descriptionParcelScreen = gardenerPartnershipScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(brestskaya);
+
+        Assert.assertEquals(actualResult, true);
+
+    }
 
     @AfterClass
     public static void closeDriver() {
