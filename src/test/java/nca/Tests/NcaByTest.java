@@ -2,6 +2,7 @@ package nca.Tests;
 
 import nca.Screens.NcaBy.about.*;
 import nca.Screens.NcaBy.NcaBy_IndexScreen;
+import nca.Screens.NcaBy.certificationSystem.NcaBy_CertificationSystemScreen;
 import nca.Screens.NcaBy.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
 import org.testng.annotations.*;
 
@@ -177,7 +178,7 @@ public class NcaByTest extends BaseTest {
                 {"Национальное Кадастровое Агентство - Организации по регистрации",
                         Arrays.asList("Реквизиты РУП «Брестское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Витебское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гомельское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гродненское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Минское городское агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты структурных подразделений РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Могилевское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений"),
                         "http://agr.brest.by/rekvizits/", "Брестское агентство по государственной регистрации и земельному кадастру > Главная страница",
-                        "http://vagr.vitebsk.by/?f=details", "Витебское агентство по государственной регистрации и земельному кадастру",
+                        "http://vagr.vitebsk.by/?f=details", "Витебское агентство по государственной регистации и земельному кадастру",
                         "http://gagrzk.by/struct/", "РУП \"Гомельское агентство по государственной регистрации и земельному кадастру\" // Структура",
                         "http://kadastr.grodno.by/enterprise.html", "О предприятии",
                         "http://mga.by/about/rekvisiti/", "Реквизиты Агентства",
@@ -189,7 +190,7 @@ public class NcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = 0, dataProvider = "registrationOrganizationsData")
+    @Test(priority = 6, dataProvider = "registrationOrganizationsData")
     public void GoToRegistrationOrganizationsAndCheckForLinksWorking (String expectedTitle, List<String> expectedLinks,
                                                                       String brestUrl, String brestTitle, String vitebskUrl,
                                                                       String vitebskTitle, String gomelUrl, String gomelTitle,
@@ -239,6 +240,30 @@ public class NcaByTest extends BaseTest {
         valuesMap = registrationOrganizationsScreen.goToMogilevLink();
         assertEquals(valuesMap.get("URL"), mogilevUrl, "Страница Могилёвского агентства: неверный адрес");
         assertEquals(valuesMap.get("Title"), mogilevTitle, "Страница Могилёвского агенства: неверный адрес");
+    }
+
+    //------------Test case #3-----------------
+
+    @DataProvider
+    public Object[][] certificationData() {
+        return new Object[][]{
+                {"Единая Система Аттестации",
+                        Arrays.asList("\"Единая система аттестации\"", "В разделе «Учебное тестирование»", "«Система аттестации»")
+                }
+        };
+    }
+
+    @Test(priority = 7, dataProvider = "certificationData")
+    public void GoToCertificationSystem(String expectedTitle, List<String> expectedParagraphs) throws IOException {
+
+        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
+        NcaBy_CertificationSystemScreen certificationSystemScreen = indexScreen.goToNcaBy_CertificationScreen();
+
+        String pageTitle = certificationSystemScreen.getPageTitle();
+        List<String> pageParagraphs = certificationSystemScreen.getTextParagraphs();
+
+        assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
+        assertEquals(pageParagraphs, expectedParagraphs, "Содержимое страницы не соотетствует ожидаемому");
     }
 
 }

@@ -1,6 +1,7 @@
 package nca.Screens.NcaBy;
 
 import nca.Screens.NcaBy.about.NcaBy_AboutCompanyScreen;
+import nca.Screens.NcaBy.certificationSystem.NcaBy_CertificationSystemScreen;
 import nca.Screens.NcaBy.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
 import nca.Utils.LoadPage;
 import org.apache.log4j.Logger;
@@ -28,16 +29,23 @@ public class NcaBy_IndexScreen {
     //--------Xpath----------
     private static final String ABOUT_COMPANY_LINK = "//a[@href='/rus/about/']";
     private static final String REGISTRATION_ORGANIZATIONS_LINK = "//a[@href='/rus/org/']";
+    private static final String CERTIFICATION_SYSTEM_LINK = "//a[@href='http://esa.nca.by']";
+
     //--------Xpath End------
 
-    public NcaBy_AboutCompanyScreen goToNcaBy_AboutCompany(){
+    public NcaBy_AboutCompanyScreen goToNcaBy_AboutCompany() {
         driver.findElement(By.xpath(ABOUT_COMPANY_LINK)).click();
         return new NcaBy_AboutCompanyScreen(driver);
     }
 
-    public NcaBy_RegistrationOrganizationsScreen goToNcaBy_RegistrationOrganizations(){
+    public NcaBy_RegistrationOrganizationsScreen goToNcaBy_RegistrationOrganizations() {
         driver.findElement(By.xpath(REGISTRATION_ORGANIZATIONS_LINK)).click();
         return new NcaBy_RegistrationOrganizationsScreen(driver);
+    }
+
+    public NcaBy_CertificationSystemScreen goToNcaBy_CertificationScreen() {
+        driver.findElement(By.xpath(CERTIFICATION_SYSTEM_LINK)).click();
+        return new NcaBy_CertificationSystemScreen(driver);
     }
 
 }
