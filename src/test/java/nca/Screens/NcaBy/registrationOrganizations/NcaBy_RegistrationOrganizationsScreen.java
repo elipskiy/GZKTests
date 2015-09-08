@@ -72,7 +72,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
-            //loadPage.waitForPageLoaded(wrapper.getDriver());
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -90,6 +90,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -107,6 +108,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -124,6 +126,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -141,6 +144,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -158,6 +162,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -175,6 +180,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -192,6 +198,7 @@ public class NcaBy_RegistrationOrganizationsScreen {
             map.put("URL", wrapper.getCurrentUrl());
             map.put("Title", wrapper.getPageTitle());
             wrapper.goBack();
+            loadPage.waitForPageLoaded(wrapper.getDriver());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

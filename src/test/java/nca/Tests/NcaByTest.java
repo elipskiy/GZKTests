@@ -175,13 +175,29 @@ public class NcaByTest extends BaseTest {
     public Object[][] registrationOrganizationsData() {
         return new Object[][]{
                 {"Национальное Кадастровое Агентство - Организации по регистрации",
-                        Arrays.asList("Реквизиты РУП «Брестское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Витебское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гомельское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гродненское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Минское городское агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты структурных подразделений РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Могилевское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений")
+                        Arrays.asList("Реквизиты РУП «Брестское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Витебское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гомельское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Гродненское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений", "Реквизиты РУП «Минское городское агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты структурных подразделений РУП «Минское областное агентство по государственной регистрации и земельному кадастру»", "Реквизиты РУП «Могилевское агентство по государственной регистрации и земельному кадастру» и его структурных подразделений"),
+                        "http://agr.brest.by/rekvizits/", "Брестское агентство по государственной регистрации и земельному кадастру > Главная страница",
+                        "http://vagr.vitebsk.by/?f=details", "Витебское агентство по государственной регистрации и земельному кадастру",
+                        "http://gagrzk.by/struct/", "РУП \"Гомельское агентство по государственной регистрации и земельному кадастру\" // Структура",
+                        "http://kadastr.grodno.by/enterprise.html", "О предприятии",
+                        "http://mga.by/about/rekvisiti/", "Реквизиты Агентства",
+                        "http://www.moa.by/?page=1", "Минское областное агентство по государственной регистрации и земельному кадастру",
+                        "http://www.moa.by/?page=4", "Минское областное агентство по государственной регистрации и земельному кадастру",
+                        "http://mogilev.kadastr.by/index.php?option=com_content&view=article&id=136&Itemid=78", "Сведения об организации"
                 }
+                
         };
     }
 
     @Test(priority = 0, dataProvider = "registrationOrganizationsData")
-    public void GoToRegistrationOrganizationsAndCheckForLinksWorking (String expectedTitle, List<String> expectedLinks) throws IOException {
+    public void GoToRegistrationOrganizationsAndCheckForLinksWorking (String expectedTitle, List<String> expectedLinks,
+                                                                      String brestUrl, String brestTitle, String vitebskUrl,
+                                                                      String vitebskTitle, String gomelUrl, String gomelTitle,
+                                                                      String grodnoUrl, String grodnoTitle, String minskUrl,
+                                                                      String minskTitle, String minskRegionMainUrl,
+                                                                      String minskRegionMainTitle, String minskRegionUnitsUrl,
+                                                                      String minskRegionUnitsTitle, String mogilevUrl,
+                                                                      String mogilevTitle) throws IOException {
 
         NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
         NcaBy_RegistrationOrganizationsScreen registrationOrganizationsScreen = indexScreen.goToNcaBy_RegistrationOrganizations();
@@ -192,10 +208,37 @@ public class NcaByTest extends BaseTest {
         assertEquals(pageLinks, expectedLinks, "Список ссылок не соответствует ожидаемому");
 
         Map<String,String> valuesMap;
-        valuesMap = registrationOrganizationsScreen.goToMinskLink();
+        valuesMap = registrationOrganizationsScreen.goToBrestLink();
+        assertEquals(valuesMap.get("URL"), brestUrl, "Страница Брестского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), brestTitle, "Страница Брестского агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToVitebskLink();
+        assertEquals(valuesMap.get("URL"), vitebskUrl, "Страница Витебского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), vitebskTitle, "Страница Витебского агенства: неверный адрес");
+
         valuesMap = registrationOrganizationsScreen.goToGomelLink();
-        registrationOrganizationsScreen.goToBrestLink();
-        registrationOrganizationsScreen.goToMinskRegionMainLink();
+        assertEquals(valuesMap.get("URL"), gomelUrl, "Страница Гомельского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), gomelTitle, "Страница Гомельского агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToGrodnoLink();
+        assertEquals(valuesMap.get("URL"), grodnoUrl, "Страница Гродненского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), grodnoTitle, "Страница Гродненского агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToMinskLink();
+        assertEquals(valuesMap.get("URL"), minskUrl, "Страница Минского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), minskTitle, "Страница Минского агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToMinskRegionMainLink();
+        assertEquals(valuesMap.get("URL"), minskRegionMainUrl, "Страница Минского основного областного агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), minskRegionMainTitle, "Страница Минского основного областного агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToMinskRegionStructureUnitsLink();
+        assertEquals(valuesMap.get("URL"), minskRegionUnitsUrl, "Страница струкутурных подразделений Минского областного агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), minskRegionUnitsTitle, "Страница струкутурных подразделений Минского областного агенства: неверный адрес");
+
+        valuesMap = registrationOrganizationsScreen.goToMogilevLink();
+        assertEquals(valuesMap.get("URL"), mogilevUrl, "Страница Могилёвского агентства: неверный адрес");
+        assertEquals(valuesMap.get("Title"), mogilevTitle, "Страница Могилёвского агенства: неверный адрес");
     }
 
 }
