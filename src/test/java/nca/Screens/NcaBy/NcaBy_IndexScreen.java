@@ -93,24 +93,24 @@ public class NcaBy_IndexScreen {
         return new NcaBy_PublicCadastralMapScreen(driver);
     }
 
-//    public NcaBy_StreetNamesScreen goToNcaBy_StreetNamesScreen() {
-//        driver.findElement(By.xpath(STREET_NAMES_LINK)).click();
-//        return new NcaBy_StreetNamesScreen(driver);
-//    }
-//
-//    public NcaBy_LandTaxesBaseScreen goToNcaBy_LandTaxesBaseScreen() {
-//        driver.findElement(By.xpath(LAND_TAXES_LINK)).click();
-//        return new NcaBy_LandTaxesBaseScreen(driver);
-//    }
-//
-//    public NcaBy_ElectronicalInteractionScreen goToNcaBy_ElectronicalInteractionScreen() {
-//        driver.findElement(By.xpath(ELECTRONICAL_INTERACTION_LINK)).click();
-//        return new NcaBy_ElectronicalInteractionScreen(driver);
-//    }
-//
-//    public NcaBy_SupportLineScreen goToNcaBy_SupportLineScreen() {
-//        driver.findElement(By.xpath(SUPPORT_LINK)).click();
-//        return new NcaBy_SupportLineScreen(driver);
-//    }
+    public NcaBy_StreetNamesScreen goToNcaBy_StreetNamesScreen() {
+        driver.findElement(By.xpath(STREET_NAMES_LINK)).click();
+        return new NcaBy_StreetNamesScreen(driver);
+    }
+
+    public NcaBy_LandTaxesBaseScreen goToNcaBy_LandTaxesBaseScreen() {
+        driver.findElement(By.xpath(LAND_TAXES_LINK)).click();
+        return new NcaBy_LandTaxesBaseScreen(driver);
+    }
+
+    public NcaBy_ElectronicalInteractionScreen goToNcaBy_ElectronicalInteractionScreen() {
+        driver.findElement(By.xpath(ELECTRONICAL_INTERACTION_LINK)).click();
+        return new NcaBy_ElectronicalInteractionScreen(driver);
+    }
+
+    public NcaBy_SupportLineScreen goToNcaBy_SupportLineScreen() {
+        driver.findElement(By.xpath(SUPPORT_LINK)).click();
+        return new NcaBy_SupportLineScreen(driver);
+    }
 
 }

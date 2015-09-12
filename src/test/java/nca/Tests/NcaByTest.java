@@ -5,13 +5,18 @@ import nca.Screens.NcaBy.NcaBy_IndexScreen;
 import nca.Screens.NcaBy.certificationSystem.NcaBy_CertificationSystemScreen;
 import nca.Screens.NcaBy.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
 import nca.Screens.NcaBy.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
+import nca.Screens.NcaBy.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
 import nca.Screens.NcaBy.electronicalServices.NcaBy_ElectronicalServicesScreen;
 import nca.Screens.NcaBy.forum.NcaBy_ForumScreen;
 import nca.Screens.NcaBy.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
 import nca.Screens.NcaBy.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
+import nca.Screens.NcaBy.streetNames.NcaBy_StreetNamesScreen;
+import nca.Screens.NcaBy.supportLine.NcaBy_SupportLineScreen;
+import nca.Screens.NcaBy.taxesBase.NcaBy_LandTaxesBaseScreen;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +29,7 @@ public class NcaByTest extends BaseTest {
     @BeforeMethod()
     public void getNewDriver()	{
         getDriver();
+        nullErrors();
     }
 
     @AfterMethod
@@ -210,41 +216,43 @@ public class NcaByTest extends BaseTest {
 
         String pageTitle = registrationOrganizationsScreen.getPageTitle();
         List<String> pageLinks = registrationOrganizationsScreen.getLinksList();
-        assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
-        assertEquals(pageLinks, expectedLinks, "Список ссылок не соответствует ожидаемому");
+        assertEqualsContinue(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
+        assertEqualsContinue(pageLinks, expectedLinks, "Список ссылок не соответствует ожидаемому");
 
         Map<String,String> valuesMap;
         valuesMap = registrationOrganizationsScreen.goToBrestLink();
-        assertEquals(valuesMap.get("URL"), brestUrl, "Страница Брестского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), brestTitle, "Страница Брестского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), brestUrl, "Страница Брестского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), brestTitle, "Страница Брестского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToVitebskLink();
-        assertEquals(valuesMap.get("URL"), vitebskUrl, "Страница Витебского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), vitebskTitle, "Страница Витебского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), vitebskUrl, "Страница Витебского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), vitebskTitle, "Страница Витебского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToGomelLink();
-        assertEquals(valuesMap.get("URL"), gomelUrl, "Страница Гомельского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), gomelTitle, "Страница Гомельского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), gomelUrl, "Страница Гомельского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), gomelTitle, "Страница Гомельского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToGrodnoLink();
-        assertEquals(valuesMap.get("URL"), grodnoUrl, "Страница Гродненского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), grodnoTitle, "Страница Гродненского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), grodnoUrl, "Страница Гродненского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), grodnoTitle, "Страница Гродненского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskLink();
-        assertEquals(valuesMap.get("URL"), minskUrl, "Страница Минского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), minskTitle, "Страница Минского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), minskUrl, "Страница Минского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), minskTitle, "Страница Минского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskRegionMainLink();
-        assertEquals(valuesMap.get("URL"), minskRegionMainUrl, "Страница Минского основного областного агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), minskRegionMainTitle, "Страница Минского основного областного агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), minskRegionMainUrl, "Страница Минского основного областного агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), minskRegionMainTitle, "Страница Минского основного областного агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskRegionStructureUnitsLink();
-        assertEquals(valuesMap.get("URL"), minskRegionUnitsUrl, "Страница струкутурных подразделений Минского областного агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), minskRegionUnitsTitle, "Страница струкутурных подразделений Минского областного агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), minskRegionUnitsUrl, "Страница струкутурных подразделений Минского областного агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), minskRegionUnitsTitle, "Страница струкутурных подразделений Минского областного агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMogilevLink();
-        assertEquals(valuesMap.get("URL"), mogilevUrl, "Страница Могилёвского агентства: неверный адрес");
-        assertEquals(valuesMap.get("Title"), mogilevTitle, "Страница Могилёвского агенства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("URL"), mogilevUrl, "Страница Могилёвского агентства: неверный адрес");
+        assertEqualsContinue(valuesMap.get("Title"), mogilevTitle, "Страница Могилёвского агенства: неверный адрес");
+
+        assertTrue(errors.isEmpty(), errors.toString());
     }
 
     //------------Test case #3-----------------
@@ -310,7 +318,7 @@ public class NcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = -10, dataProvider = "electronicalAppealData")
+    @Test(priority = 9, dataProvider = "electronicalAppealData")
     public void goToElectronicalAppeal(String expectedTitle, String expectedHeader, String expectedLinkText) throws IOException {
 
         NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
@@ -336,7 +344,7 @@ public class NcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = -9, dataProvider = "databaseStatisticsData")
+    @Test(priority = 10, dataProvider = "databaseStatisticsData")
     public void goToDatabaseStatistics(String expectedTitle, String expectedHeader) throws IOException {
 
         NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
@@ -355,12 +363,12 @@ public class NcaByTest extends BaseTest {
     public Object[][] electronicalServicesData() {
         return new Object[][]{
                 {"Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Электронные услуги",
-                        "Электронные услуги"
+                    "Электронные услуги"
                 }
         };
     }
 
-    @Test(priority = -8, dataProvider = "electronicalServicesData")
+    @Test(priority = 11, dataProvider = "electronicalServicesData")
     public void goToElectronicalServices(String expectedTitle, String expectedHeader) throws IOException {
 
         NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
@@ -373,7 +381,6 @@ public class NcaByTest extends BaseTest {
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
     }
 
-
     //------------Test case #8-----------------
 
     @DataProvider
@@ -383,7 +390,7 @@ public class NcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = -7, dataProvider = "cadastralMapData")
+    @Test(priority = 12, dataProvider = "cadastralMapData")
     public void goToPublicCadastralMap(String expectedUrl) throws IOException {
 
         NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
@@ -394,6 +401,111 @@ public class NcaByTest extends BaseTest {
         assertEquals(pageUrl, expectedUrl, "Неверная URL страницы");
     }
 
+    //------------Test case #9-----------------
+
+    @DataProvider
+    public Object[][] streetNamesData() {
+        return new Object[][]{
+                {"Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Присвоение наименований элементам улично-дорожной сети",
+                "Присвоение наименований элементам улично-дорожной сети",
+                "http://gzk.nca.by/streets.php",
+                "Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Присвоение наименований элементам улично-дорожной сети - Рекомендации по наименованиям элементов улично-дорожной сети",
+                "Рекомендации по наименованиям элементов улично-дорожной сети"}
+        };
+    }
+
+    @Test(priority = 13, dataProvider = "streetNamesData")
+    public void goToStreetNames(String expectedTitleStreets, String expectedHeaderStreets, String expectedUrlElements,
+                                String expectedTitleRecommendations, String expectedHeaderRecommendations) throws IOException {
+
+        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
+        NcaBy_StreetNamesScreen streetNamesScreen = indexScreen.goToNcaBy_StreetNamesScreen();
+
+        String pageTitle = streetNamesScreen.getPageTitle();
+        String pageHeader = streetNamesScreen.getTextHeader();
+
+        assertEqualsContinue(pageTitle, expectedTitleStreets, "Неверное название страницы");
+        assertEqualsContinue(pageHeader, expectedHeaderStreets, "Заголовок страницы не соотетствует ожидаемому");
+
+        Map<String, String> valueMap;
+
+        valueMap = streetNamesScreen.goToElementsPage();
+        assertEqualsContinue(valueMap.get("URL"), expectedUrlElements, "Неверный URL");
+
+        valueMap = streetNamesScreen.goToRecommendationsPage();
+        assertEqualsContinue(valueMap.get("Title"), expectedTitleRecommendations, "Неверное название страницы");
+        assertEqualsContinue(valueMap.get("Header"), expectedHeaderRecommendations, "Заголовок страницы не соотетствует ожидаемому");
+
+        assertTrue(errors.isEmpty(), errors.toString());
+    }
+
+    //------------Test case #10-----------------
+
+    @DataProvider
+    public Object[][] taxesBaseData() {
+        return new Object[][]{
+                {"http://vl.nca.by/"}
+        };
+    }
+
+    @Test(priority = 14, dataProvider = "taxesBaseData")
+    public void goToLandTaxesBase(String expectedUrl) throws IOException {
+
+        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
+        NcaBy_LandTaxesBaseScreen taxesBaseScreen = indexScreen.goToNcaBy_LandTaxesBaseScreen();
+
+        String pageUrl = taxesBaseScreen.getUrl();
+
+        assertEquals(pageUrl, expectedUrl, "Неверная URL страницы");
+    }
+
+    //------------Test case #11-----------------
+
+    @DataProvider
+    public Object[][] electronicalInteractionData() {
+        return new Object[][]{
+                {"Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Электронные услуги - Электронное взаимодействие по административным процедурам",
+                        "Электронное взаимодействие по административным процедурам"
+                }
+        };
+    }
+
+    @Test(priority = 15, dataProvider = "electronicalInteractionData")
+    public void goToElectronicalInteraction(String expectedTitle, String expectedHeader) throws IOException {
+
+        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
+        NcaBy_ElectronicalInteractionScreen electronicalInteractionScreen = indexScreen.goToNcaBy_ElectronicalInteractionScreen();
+
+        String pageTitle = electronicalInteractionScreen.getPageTitle();
+        String pageHeader = electronicalInteractionScreen.getTextHeader();
+
+        assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
+        assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
+    }
+
+    //------------Test case #12-----------------
+
+    @DataProvider
+    public Object[][] supportData() {
+        return new Object[][]{
+                {"Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Правила пользования линией технической поддержки support@nca.by",
+                        "Правила пользования линией технической поддержки support@nca.by"
+                }
+        };
+    }
+
+    @Test(priority = 16, dataProvider = "supportData")
+    public void goToSupport(String expectedTitle, String expectedHeader) throws IOException {
+
+        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
+        NcaBy_SupportLineScreen supportLineScreen = indexScreen.goToNcaBy_SupportLineScreen();
+
+        String pageTitle = supportLineScreen.getPageTitle();
+        String pageHeader = supportLineScreen.getTextHeader();
+
+        assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
+        assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
+    }
 
 }
 

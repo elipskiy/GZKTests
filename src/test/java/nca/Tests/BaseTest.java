@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by eviltechnology on 12.10.2014.
@@ -13,9 +14,15 @@ import java.io.IOException;
 public class BaseTest extends Assert {
     protected static WebDriver driver;
     protected static final Logger log = Logger.getLogger(SmokeTest.class);
+    protected ArrayList<String> errors = new ArrayList<>();
 
     public BaseTest() {
         //getDriver();
+        nullErrors();
+    }
+
+    public void nullErrors() {
+        errors.clear();
     }
 
     public void getDriver() {
@@ -27,4 +34,21 @@ public class BaseTest extends Assert {
             e.printStackTrace();
         }
     }
+
+    public void assertEqualsContinue(Object actual, Object expected) {
+        assertEqualsContinue(actual, expected, "No message provided\n");
+    }
+
+    public void assertEqualsContinue(Object actual, Object expected, String message) {
+        String errorMessage = null;
+        try {
+            assertEquals(actual, expected, message);
+        } catch (AssertionError error) {
+            errorMessage = error.getMessage();
+        } finally {
+            if (errorMessage != null)
+                errors.add(errorMessage + "\n");
+        }
+    }
+
 }
