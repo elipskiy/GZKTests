@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.taxesBase;
+package nca.Screens.ncaBy.taxesBase;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.databaseStatistics;
+package nca.Screens.ncaBy.databaseStatistics;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;

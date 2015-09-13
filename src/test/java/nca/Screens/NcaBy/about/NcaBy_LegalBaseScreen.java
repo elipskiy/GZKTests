@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.about;
+package nca.Screens.ncaBy.about;
 
 import nca.Utils.DriverWrapper;
 import nca.Utils.LoadPage;

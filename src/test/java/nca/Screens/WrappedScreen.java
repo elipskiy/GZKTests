@@ -27,8 +27,8 @@ public abstract class WrappedScreen {
         return wrapper.getPageTitle();
     }
 
-    protected List<String> getTextParagraphsUnified(String textParagraphs) {
-        List<WebElement> listOfElements = wrapper.findElementsByXpath(textParagraphs);
+    protected List<String> getTextOfElements(String elementsXpath) {
+        List<WebElement> listOfElements = wrapper.findElementsByXpath(elementsXpath);
         List<String> listOfParagraphs = new ArrayList<String>();
         for(WebElement element : listOfElements)
             listOfParagraphs.add(element.getText());

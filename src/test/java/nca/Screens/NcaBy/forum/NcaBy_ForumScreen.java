@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.forum;
+package nca.Screens.ncaBy.forum;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;

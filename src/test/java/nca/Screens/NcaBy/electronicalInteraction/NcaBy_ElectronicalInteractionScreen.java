@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.electronicalInteraction;
+package nca.Screens.ncaBy.electronicalInteraction;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;

@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by eviltechnology on 12.10.2014.
@@ -33,6 +35,12 @@ public class BaseTest extends Assert {
             log.debug(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public String getTodayDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        return sdf.format(date);
     }
 
     public void assertEqualsContinue(Object actual, Object expected) {

@@ -1,11 +1,8 @@
-package nca.Screens.NcaBy.certificationSystem;
+package nca.Screens.ncaBy.certificationSystem;
 
 import nca.Screens.WrappedScreen;
-import nca.Utils.DriverWrapper;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +19,6 @@ public class NcaBy_CertificationSystemScreen extends WrappedScreen {
     //--------Xpath End------
 
     public List<String> getTextParagraphs() {
-        return getTextParagraphsUnified(TEXT_PARAGRAPHS);
+        return getTextOfElements(TEXT_PARAGRAPHS);
     }
 }

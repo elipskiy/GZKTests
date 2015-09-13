@@ -1,9 +1,7 @@
-package nca.Screens.NcaBy.electronicalAppeal;
+package nca.Screens.ncaBy.electronicalAppeal;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;
-
-import java.util.List;
 
 /**
  * Created by mugi4_000 on 10.09.2015.

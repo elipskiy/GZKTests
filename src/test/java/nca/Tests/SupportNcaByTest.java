@@ -1,7 +1,5 @@
 package nca.Tests;
 
-import nca.Screens.NcaBy.NcaBy_IndexScreen;
-import nca.Screens.NcaBy.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
 import nca.Screens.supportNcaBy.SupportNcaEdScreen;
 import nca.Screens.supportNcaBy.SupportNcaLibScreen;
 import nca.Screens.supportNcaBy.SupportNcaSgdScreen;

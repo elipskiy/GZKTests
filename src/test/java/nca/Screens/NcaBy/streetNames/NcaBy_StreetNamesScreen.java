@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.streetNames;
+package nca.Screens.ncaBy.streetNames;
 
 import nca.Screens.WrappedScreen;
 import nca.Utils.LoadPage;

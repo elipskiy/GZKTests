@@ -1,9 +1,8 @@
-package nca.Screens.NcaBy.about;
+package nca.Screens.ncaBy.about;
 
 import nca.Utils.DriverWrapper;
 import nca.Utils.LoadPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 

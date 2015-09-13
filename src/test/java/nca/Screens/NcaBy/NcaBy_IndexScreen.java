@@ -1,25 +1,21 @@
-package nca.Screens.NcaBy;
+package nca.Screens.ncaBy;
 
 import nca.Screens.IndexScreen;
-import nca.Screens.NcaBy.about.NcaBy_AboutCompanyScreen;
-import nca.Screens.NcaBy.certificationSystem.NcaBy_CertificationSystemScreen;
-import nca.Screens.NcaBy.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
-import nca.Screens.NcaBy.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
-import nca.Screens.NcaBy.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
-import nca.Screens.NcaBy.electronicalServices.NcaBy_ElectronicalServicesScreen;
-import nca.Screens.NcaBy.forum.NcaBy_ForumScreen;
-import nca.Screens.NcaBy.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
-import nca.Screens.NcaBy.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
-import nca.Screens.NcaBy.streetNames.NcaBy_StreetNamesScreen;
-import nca.Screens.NcaBy.supportLine.NcaBy_SupportLineScreen;
-import nca.Screens.NcaBy.taxesBase.NcaBy_LandTaxesBaseScreen;
+import nca.Screens.ncaBy.about.NcaBy_AboutCompanyScreen;
+import nca.Screens.ncaBy.certificationSystem.NcaBy_CertificationSystemScreen;
+import nca.Screens.ncaBy.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
+import nca.Screens.ncaBy.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
+import nca.Screens.ncaBy.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
+import nca.Screens.ncaBy.electronicalServices.NcaBy_ElectronicalServicesScreen;
+import nca.Screens.ncaBy.forum.NcaBy_ForumScreen;
+import nca.Screens.ncaBy.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
+import nca.Screens.ncaBy.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
+import nca.Screens.ncaBy.streetNames.NcaBy_StreetNamesScreen;
+import nca.Screens.ncaBy.supportLine.NcaBy_SupportLineScreen;
+import nca.Screens.ncaBy.taxesBase.NcaBy_LandTaxesBaseScreen;
 import nca.Utils.DriverWrapper;
-import nca.Utils.LoadPage;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.io.IOException;
 
 /**
  * Created by mugi4_000 on 06.09.2015.

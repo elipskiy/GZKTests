@@ -1,9 +1,5 @@
-package nca.Screens.NcaBy.registrationOrganizations;
+package nca.Screens.ncaBy.registrationOrganizations;
 
-import nca.Screens.NcaBy.about.NcaBy_DirectorshipScreen;
-import nca.Screens.NcaBy.about.NcaBy_LegalBaseScreen;
-import nca.Screens.NcaBy.about.NcaBy_ObjectivesAndFunctionsScreen;
-import nca.Screens.NcaBy.about.NcaBy_StructureScreen;
 import nca.Utils.DriverWrapper;
 import nca.Utils.LoadPage;
 import nca.Utils.PageScreenShot;

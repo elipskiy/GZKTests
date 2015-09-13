@@ -1,4 +1,4 @@
-package nca.Screens.NcaBy.publicCadastralMap;
+package nca.Screens.ncaBy.publicCadastralMap;
 
 import nca.Screens.WrappedScreen;
 import org.openqa.selenium.WebDriver;
