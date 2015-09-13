@@ -7,6 +7,7 @@ import net.sourceforge.htmlunit.corejs.javascript.JavaScriptException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 
 import java.awt.*;
@@ -39,9 +40,10 @@ public class DriverWrapper {
     }
 
     //******************************************************************************************************************
-    public void findByXpath(String xpath){
+    public WebElement findByXpath(String xpath){
         WebElement element = driver.findElement(By.xpath(xpath));
         log.info(String.format("Элемент по xpath = %s найден", xpath));
+        return element;
     }
 
     //******************************************************************************************************************
@@ -86,7 +88,7 @@ public class DriverWrapper {
 
 
     //******************************************************************************************************************
-    public void  clickByXpath(String xpath, int timeout){
+    public void clickByXpath(String xpath, int timeout){
         WebElement element = driver.findElement(By.xpath(xpath));//добавить ожидание
         log.info(String.format("Элемент по xpath = %s найден", xpath));
         element.click();
@@ -145,7 +147,7 @@ public class DriverWrapper {
 
     //******************************************************************************************************************
     public String getPageTitle(){
-        String pageTitle = driver.getTitle();
+        String pageTitle = driver.getTitle().trim();
         log.info(String.format("Title страницы = %s", pageTitle));
         return pageTitle;
 
@@ -182,6 +184,20 @@ public class DriverWrapper {
     public String getCurrentUrl(){
         String url = driver.getCurrentUrl();
         return url;
+    }
+
+    //******************************************************************************************************************
+    public void goBack() {
+        driver.navigate().back();
+    }
+
+    //******************************************************************************************************************
+    public void selectFromDropdown(String xpath, String optionText) {
+        Select select = new Select(findByXpath(xpath));
+        log.info("Элемент по xpath = " + xpath + " найден");
+        //select.deselectAll();
+        select.selectByVisibleText(optionText);
+        log.info("Установил значение элемента по xpath = " + xpath + " на " + optionText);
     }
 
     //******************************************************************************************************************
