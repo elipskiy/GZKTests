@@ -1,6 +1,6 @@
 package by.nca.support;
 
-import by.nca.IndexScreen;
+import by.nca.BaseIndexScreen;
 import utils.DriverWrapper;
 import org.openqa.selenium.WebDriver;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by mugi4_000 on 12.09.2015.
  */
-public class SupportNcaLibScreen extends IndexScreen {
+public class SupportNcaLibScreen extends BaseIndexScreen {
 
     private static final String PAGE_URL = "http://support.nca.by:8888/nka_lib.nsf";
     private DriverWrapper wrapper;

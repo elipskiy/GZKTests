@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by mugi4_000 on 13.09.2015.
  */
-public class RzoNcaBy_StatisticsResult extends WrappedScreen {
+public class StatisticsResultScreen extends WrappedScreen {
 
-    RzoNcaBy_StatisticsResult(WebDriver driver) {
+    StatisticsResultScreen(WebDriver driver) {
         super(driver);
         screenShot = new PageScreenShot(driver);
     }
@@ -23,9 +23,9 @@ public class RzoNcaBy_StatisticsResult extends WrappedScreen {
     private static final String CRITERIA_TABLE = "//table[@class='captb']/tbody/tr/td";
     //--------Xpath End------
 
-    public List getTableElements() {
+    public List getTableElements(String screenshotName) {
         try {
-            screenShot.takeScreenShot("rzo.nca.by_Общая статистика: общие параметры_case_1");
+            screenShot.takeScreenShot(screenshotName);
         } catch (IOException e) {
             e.printStackTrace();
         }

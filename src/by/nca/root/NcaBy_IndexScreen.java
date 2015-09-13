@@ -4,7 +4,7 @@ import by.nca.root.certificationSystem.NcaBy_CertificationSystemScreen;
 import by.nca.root.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
 import by.nca.root.forum.NcaBy_ForumScreen;
 import by.nca.root.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
-import by.nca.IndexScreen;
+import by.nca.BaseIndexScreen;
 import by.nca.root.about.NcaBy_AboutCompanyScreen;
 import by.nca.root.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
 import by.nca.root.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
@@ -20,7 +20,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_IndexScreen extends IndexScreen {
+public class NcaBy_IndexScreen extends BaseIndexScreen {
 
     private static final String MAIN_PAGE_URL = "http://nca.by/";
 

@@ -1,18 +1,18 @@
 package by.nca.rzo;
 
-import by.nca.IndexScreen;
+import by.nca.BaseIndexScreen;
 import utils.DriverWrapper;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by mugi4_000 on 13.09.2015.
  */
-public class RzoNcaBy_IndexScreen extends IndexScreen {
+public class IndexScreen extends BaseIndexScreen {
 
     private static final String MAIN_PAGE_URL = "http://rzo.nca.by";
     private DriverWrapper wrapper;
 
-    public RzoNcaBy_IndexScreen(WebDriver driver) {
+    public IndexScreen(WebDriver driver) {
         super(driver, MAIN_PAGE_URL);
         wrapper = new DriverWrapper(driver);
     }
@@ -32,9 +32,9 @@ public class RzoNcaBy_IndexScreen extends IndexScreen {
         loadPage.waitForPageLoaded(driver);
     }
 
-    public RzoNcaBy_CommonStatistics goToCommonStatistics() {
+    public CommonStatisticsScreen goToCommonStatistics() {
         wrapper.clickByXpath(COMMON_STATISTICS_BUTTON);
-        return new RzoNcaBy_CommonStatistics(driver);
+        return new CommonStatisticsScreen(driver);
     }
 
 }

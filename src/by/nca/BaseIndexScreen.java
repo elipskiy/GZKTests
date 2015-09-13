@@ -7,13 +7,13 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 12.09.2015.
  */
-public abstract class IndexScreen {
+public abstract class BaseIndexScreen {
 
     public WebDriver driver;
     public Logger log;
     public LoadPage loadPage;
 
-    public IndexScreen(WebDriver driver, String mainPageUrl) {
+    public BaseIndexScreen(WebDriver driver, String mainPageUrl) {
         this.driver = driver;
         driver.get(mainPageUrl);
         log = Logger.getLogger(this.getClass());

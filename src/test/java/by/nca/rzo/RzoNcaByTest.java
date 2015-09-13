@@ -58,52 +58,45 @@ public class RzoNcaByTest extends BaseTest {
         String till = "17.08.2015";
         String city = "г. Минск";
 
-        RzoNcaBy_IndexScreen indexScreen = new RzoNcaBy_IndexScreen(driver);
+        IndexScreen indexScreen = new IndexScreen(driver);
         indexScreen.login(USERNAME, PASSWORD);
-        RzoNcaBy_CommonStatistics commonStatistics = indexScreen.goToCommonStatistics();
-        RzoNcaBy_StatisticsResult statisticsResult = commonStatistics.getStatistics(estimationObject, from, till, city);
-        List pageElements = statisticsResult.getTableElements();
+        CommonStatisticsScreen commonStatistics = indexScreen.goToCommonStatistics();
+        StatisticsResultScreen statisticsResult = commonStatistics.getStatistics(estimationObject, from, till, city);
+        List pageElements = statisticsResult.getTableElements("rzo.nca.by_Общая статистика: общие параметры");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
 
-//    //------------Test case #2-----------------
-//
-//    @DataProvider
-//    public Object[][] estimationMethodsData() {
-//        return new Object[][]{
-//                {
-//                        Arrays.asList("Дата статистики:",
-//                                getTodayDate(),
-//                                "Критерии для статистики:",
-//                                "Не включая заключения до 01.05.2011",
-//                                "Дата оценки",
-//                                "01.01.2015 - 17.08.2015",
-//                                "Объект оценки",
-//                                "изолированное помещение",
-//                                "Местоположение",
-//                                "г. Минск"
-//                        )
-//                }
-//        };
-//    }
-//
-//    @Test(priority = 1, dataProvider = "estimationMethodsData")
-//    public void getEstimationMethods(List expectedElements) throws IOException {
-//
-//        String estimationObject = "изолированное помещение";
-//        String from = "01.01.2015";
-//        String till = "17.08.2015";
-//        String city = "г. Минск";
-//
-//        RzoNcaBy_IndexScreen indexScreen = new RzoNcaBy_IndexScreen(driver);
-//        indexScreen.login(USERNAME, PASSWORD);
-//        RzoNcaBy_CommonStatistics commonStatistics = indexScreen.goToCommonStatistics();
-//        RzoNcaBy_StatisticsResult statisticsResult = commonStatistics.getStatistics(estimationObject, from, till, city);
-//        List pageElements = statisticsResult.getTableElements();
-//
-//        assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
-//    }
-//
+    //------------Test case #2-----------------
+    @DataProvider
+    public Object[][] estimationMethodsData() {
+        return new Object[][]{
+                {
+                        Arrays.asList(
+                                "Дата статистики:",
+                                getTodayDate(),
+                                "Критерии для статистики:",
+                                "Не включая заключения до 01.05.2011",
+                                "Методы оценки (и)",
+                                "рыночный доходный метод"
+                        )
+                }
+        };
+    }
+
+    @Test(priority = 2, dataProvider = "estimationMethodsData")
+    public void getEstimationMethodsStatistics(List expectedElements) throws IOException {
+
+        String estimationMethod = "рыночный доходный метод";
+
+        IndexScreen indexScreen = new IndexScreen(driver);
+        indexScreen.login(USERNAME, PASSWORD);
+        CommonStatisticsScreen commonStatistics = indexScreen.goToCommonStatistics();
+        StatisticsResultScreen statisticsResult = commonStatistics.getEvaluationMethodStatistics(estimationMethod);
+        List pageElements = statisticsResult.getTableElements("rzo.nca.by_Общая статистика: методы оценки");
+
+        assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
+    }
+
 
 }
