@@ -2,7 +2,6 @@ package nca.Utils;
 
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.sourceforge.htmlunit.corejs.javascript.JavaScriptException;
 import org.apache.log4j.Logger;
@@ -283,6 +282,7 @@ public class DriverWrapper {
     //******************************************************************************************************************
     public void scrollDown(String xpath)  {
         WebElement element = driver.findElement(By.xpath(xpath));
+
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
                 ,element);
 

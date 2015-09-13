@@ -1,6 +1,6 @@
 package nca.Tests;
 
-import nca.Screens.*;
+import gzk.nca.by.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
@@ -17,21 +17,21 @@ public class GzkNcaByTest extends BaseTest {
 
         String name = "Monitoring";
         String key = "ghEvT45!as";
-        GzkNcaBy_IndexScreen indexScreen = (new GzkNcaBy_IndexScreen(driver));
+        IndexScreen indexScreen = (new IndexScreen(driver));
         indexScreen.clickFindByAddressRadioBtn();
-        GzkNcaBy_RegionScreen regionScreen = indexScreen.goToGzkNcaBy_RegionScreen();
+        RegionScreen regionScreen = indexScreen.goToGzkNcaBy_RegionScreen();
         regionScreen.selectMinskRegion();
-        GzkNcaBy_DistrictScreen districtScreen = regionScreen.goToGzkNcaBy_DistrictScreen();
+        DistrictScreen districtScreen = regionScreen.goToGzkNcaBy_DistrictScreen();
         districtScreen.selectMinskDistrict();
-        GzkNcaBy_LocalityScreen localityScreen = districtScreen.goToGzkNcaBy_LocalityScreen();
+        LocalityScreen localityScreen = districtScreen.goToGzkNcaBy_LocalityScreen();
         localityScreen.selectMinskLocality();
-        GzkNcaBy_ObjectRealtyScreen objectRealtyScreen = localityScreen.goToGzkNcaBy_ObjectRealtyScreen();
+        ObjectRealtyScreen objectRealtyScreen = localityScreen.goToGzkNcaBy_ObjectRealtyScreen();
         objectRealtyScreen.selectStreet();
         objectRealtyScreen.inputHouseNumber();
-        GzkNcaBy_SearchResultScreen searchResultScreen = objectRealtyScreen.goToGzkNcaBy_SearchResultScreen();
+        SearchResultScreen searchResultScreen = objectRealtyScreen.goToGzkNcaBy_SearchResultScreen();
         searchResultScreen.selectKrasnozvezdnijResult();
         searchResultScreen.scrollToCopyingBtn();
-        GzkNcaBy_CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
+        CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
         copyingScreen.login(name, key);
         //No testResult ->
     }
@@ -46,14 +46,14 @@ public class GzkNcaByTest extends BaseTest {
         String blockNum = "08";
         String parcelNum = "000952";
 
-        GzkNcaBy_IndexScreen indexScreen = (new GzkNcaBy_IndexScreen(driver));
+        IndexScreen indexScreen = (new IndexScreen(driver));
         indexScreen.clickFindByCadastralRadioBtn();
-        GzkNcaBy_SearchByCadastralNumScreen searchByCadastralNumScreen = indexScreen.goToGzkNcaBy_SearchByCadastralNum();
+        SearchByCadastralNumScreen searchByCadastralNumScreen = indexScreen.goToGzkNcaBy_SearchByCadastralNum();
         searchByCadastralNumScreen.insertOsato(osato);
         searchByCadastralNumScreen.insertBlockNum(blockNum);
         searchByCadastralNumScreen.insertParcelNum(parcelNum);
-        GzkNcaBy_SearchResultScreen searchResultScreen = searchByCadastralNumScreen.goToGzkNcaBy_SearchResultScreen();
-        GzkNcaBy_CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
+        SearchResultScreen searchResultScreen = searchByCadastralNumScreen.goToGzkNcaBy_SearchResultScreen();
+        CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
         copyingScreen.login(name,key);
         //No testResult ->
     }
@@ -67,14 +67,14 @@ public class GzkNcaByTest extends BaseTest {
         String orgCode = "500";
         String invNum = "6247";
 
-        GzkNcaBy_IndexScreen indexScreen = (new GzkNcaBy_IndexScreen(driver));
+        IndexScreen indexScreen = (new IndexScreen(driver));
         indexScreen.clickFindByInvNumRadioBtn();
-        GzkNcaBy_SearchByInvNumScreen searchByInvNumScreen = indexScreen.goToGzkNcaBy_SearchByInvNumScreen();
+        SearchByInvNumScreen searchByInvNumScreen = indexScreen.goToGzkNcaBy_SearchByInvNumScreen();
         searchByInvNumScreen.insertOrgCode(orgCode);
         searchByInvNumScreen.selectTypeInC();
         searchByInvNumScreen.insertInvNum(invNum);
-        GzkNcaBy_SearchResultScreen searchResultScreen = searchByInvNumScreen.goToGzkNcaBy_SearchResultScreen();
-        GzkNcaBy_CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
+        SearchResultScreen searchResultScreen = searchByInvNumScreen.goToGzkNcaBy_SearchResultScreen();
+        CopyingScreen copyingScreen = searchResultScreen.goToGzkNcaBy_CopyingScreen();
         copyingScreen.login(name,key);
         //No testResult ->
 

@@ -3,7 +3,7 @@
 <suite name="Sample test suite">
     <test name="Sample Test Demonstrating testNG flow">
             <classes>
-              <class name="nca.Tests.SmokeTest" />
+              <class name="nca.Tests.PrNcaByTest" />
             </classes>
           </test>
     <listeners>

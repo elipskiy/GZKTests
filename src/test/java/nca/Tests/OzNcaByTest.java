@@ -1,7 +1,7 @@
 package nca.Tests;
 
-import nca.Screens.OzNcaBy_IndexScreen;
-import nca.Screens.OzNcaBy_SearchByInvNumScreen;
+import oz.nca.by.IndexScreen;
+import oz.nca.by.SearchByInvNumScreen;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
@@ -24,9 +24,9 @@ public class OzNcaByTest extends BaseTest {
         String key = "cdE!b4952q";
         String expectedResult = "500000000008002041";
 
-        OzNcaBy_IndexScreen indexScreen = (new OzNcaBy_IndexScreen(driver));
+        IndexScreen indexScreen = (new IndexScreen(driver));
         indexScreen.selectInvNum();
-        OzNcaBy_SearchByInvNumScreen searchByInvNumScreen = indexScreen.goToOzNcaBy_SearchByInvNumScreen();
+        SearchByInvNumScreen searchByInvNumScreen = indexScreen.goToOzNcaBy_SearchByInvNumScreen();
         searchByInvNumScreen.insertOrgId(orgId);
         searchByInvNumScreen.selectIn();
         searchByInvNumScreen.insertNum(num);

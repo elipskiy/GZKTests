@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class BaseTest {
     protected static WebDriver driver;
-    protected static final Logger log = Logger.getLogger(SmokeTest.class);
+    protected static final Logger log = Logger.getLogger(BaseTest.class);
 
     public BaseTest() {
         try {

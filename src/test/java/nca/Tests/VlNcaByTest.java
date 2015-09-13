@@ -1,10 +1,10 @@
 package nca.Tests;
 
-import nca.Screens.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+import vl.nca.by.*;
 
 import java.io.IOException;
 
@@ -13,19 +13,19 @@ import java.io.IOException;
  */
 public class VlNcaByTest extends BaseTest {
     @Test(priority = 1)
-    public void CadastralCostLangRB_SearchByCadastralParcelNum() throws IOException, InterruptedException {
+    public void cadastralCostLangRB_SearchByCadastralParcelNum() throws IOException, InterruptedException {
 
         String num1 = "5000000000";
         String num2 = "08";
         String num3 = "000952";
         String cadastralNum = "500000000008000952";
 
-        VlNcaBy_IndexScreen indexScreen = (new VlNcaBy_IndexScreen(driver));
-        VlNcaBy_CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
         cadastralCostLangRBScreen.selectCadasralNumberParcel();
-        VlNcaBy_CadastralNumberParcelLangScreen cadastralNumberParcelLangScreen = cadastralCostLangRBScreen.goToVlNcaBy_CadastralNumberParcelLangScreen();
+        CadastralNumberParcelLangScreen cadastralNumberParcelLangScreen = cadastralCostLangRBScreen.goToVlNcaBy_CadastralNumberParcelLangScreen();
         cadastralNumberParcelLangScreen.insertNum(num1, num2, num3);
-        VlNcaBy_DescriptionParcelScreen descriptionParcelScreen = cadastralNumberParcelLangScreen.goToVlNcaBy_DescriptionParcelScreen();
+        DescriptionParcelScreen descriptionParcelScreen = cadastralNumberParcelLangScreen.goToVlNcaBy_DescriptionParcelScreen();
         Thread.sleep(5000);
         boolean actualResult = descriptionParcelScreen.containsVal(cadastralNum);
 
@@ -33,21 +33,21 @@ public class VlNcaByTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void CadastralCostLangRB_SearchByLocalityAddress() throws IOException, InterruptedException{
+    public void cadastralCostLangRB_SearchByLocalityAddress() throws IOException, InterruptedException{
 
         String cadastralNum = "500000000008000952";
 
-        VlNcaBy_IndexScreen indexScreen = (new VlNcaBy_IndexScreen(driver));
-        VlNcaBy_CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
         cadastralCostLangRBScreen.selectLocalityAddress();
-        VlNcaBy_DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
+        DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
         districtScreen.selectMinsk();
-        VlNcaBy_ExactAddressScreen exactAddressScreen = districtScreen.goToVlNcaBy_ExactAddressScreen();
+        ExactAddressScreen exactAddressScreen = districtScreen.goToVlNcaBy_ExactAddressScreen();
         exactAddressScreen.selectKrasnozvezdnij();
         exactAddressScreen.insertHouseNum();
-        VlNcaBy_ParcelScreen parcelScreen = exactAddressScreen.goToVlNcaBy_ParcelScreen();
+        ParcelScreen parcelScreen = exactAddressScreen.goToVlNcaBy_ParcelScreen();
         parcelScreen.selectParcel();
-        VlNcaBy_DescriptionParcelScreen descriptionParcelScreen = parcelScreen.goToVlNcaBy_DescriptionParcelScreen();
+        DescriptionParcelScreen descriptionParcelScreen = parcelScreen.goToVlNcaBy_DescriptionParcelScreen();
         Thread.sleep(5000);
         boolean actualResult = descriptionParcelScreen.containsVal(cadastralNum);
 
@@ -55,42 +55,166 @@ public class VlNcaByTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void CadastralCostLangRB_SearchByLocalityZoneNumber() throws IOException, InterruptedException{
+    public void cadastralCostLangRB_SearchByLocalityZoneNumber() throws IOException, InterruptedException{
 
         String zoneNumber = "22";
 
-        VlNcaBy_IndexScreen indexScreen = (new VlNcaBy_IndexScreen(driver));
-        VlNcaBy_CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
         cadastralCostLangRBScreen.selectLocalityZoneNum();
-        VlNcaBy_CityScreen cityScreen = cadastralCostLangRBScreen.goToVlNcaBy_CityScreen();
+        CityScreen cityScreen = cadastralCostLangRBScreen.goToVlNcaBy_CityScreen();
         cityScreen.selectMinsk();
-        VlNcaBy_LocalityZoneNumberScreen localityZoneNumberScreen = cityScreen.goToVlNcaBy_LocalityZoneNumber();
+        LocalityZoneNumberScreen localityZoneNumberScreen = cityScreen.goToVlNcaBy_LocalityZoneNumber();
         localityZoneNumberScreen.selectZoneNum();
-        VlNcaBy_DescriptionParcelScreen descriptionParcelScreen = localityZoneNumberScreen.goToVlNcaBy_DescriptionParcelScreen();
+        DescriptionParcelScreen descriptionParcelScreen = localityZoneNumberScreen.goToVlNcaBy_DescriptionParcelScreen();
         Thread.sleep(5000);
         boolean actualResult = descriptionParcelScreen.containsVal(zoneNumber);
 
         Assert.assertEquals(actualResult, true);
     }
 
-    @Test(priority = 0)
-    public void CadastralCostLangRB_ByGardenerNamePartnership() throws IOException, InterruptedException{
+    @Test(priority = 4)
+    public void cadastralCostLangRB_SearchByGardenerNamePartnership() throws IOException, InterruptedException{
+        String brestskayaStreet = "Брестская";
 
-        String brestskaya = "���������";
-
-        VlNcaBy_IndexScreen indexScreen = (new VlNcaBy_IndexScreen(driver));
-        VlNcaBy_CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
         cadastralCostLangRBScreen.selectGardenerPartnerShip();
-        VlNcaBy_DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
+        DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
         districtScreen.selectBaranovichyDistrict();
-        VlNcaBy_GardenerPartnershipScreen gardenerPartnershipScreen = districtScreen.goToVlNcaBy_GardenerPartnershipScreen();
+        GardenerPartnershipScreen gardenerPartnershipScreen = districtScreen.goToVlNcaBy_GardenerPartnershipScreen();
         gardenerPartnershipScreen.selectStAviatorGardener();
-        VlNcaBy_DescriptionParcelScreen descriptionParcelScreen = gardenerPartnershipScreen.goToVlNcaBy_DescriptionParcelScreen();
+        DescriptionParcelScreen descriptionParcelScreen = gardenerPartnershipScreen.goToVlNcaBy_DescriptionParcelScreen();
         Thread.sleep(5000);
-        boolean actualResult = descriptionParcelScreen.containsVal(brestskaya);
+        boolean actualResult = descriptionParcelScreen.containsVal(brestskayaStreet);
 
         Assert.assertEquals(actualResult, true);
+    }
 
+    @Test(priority = 5)
+    public void cadastralCostLangRB_SearchByAreasOutsideSettlements() throws IOException, InterruptedException{
+        log.info("Кадастровая стоимость земель Республики Беларусь: По территориям вне населенных пунктов, \n" +
+                "садоводческих товариществ, дачного \n" +
+                "строительства");
+        String velikolykskij = "Великолукский с/с";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        CadastralCostLangRBScreen cadastralCostLangRBScreen = indexScreen.goToVlNcaBy_CadastralCostLangRBScreen();
+        cadastralCostLangRBScreen.selectAreasOutsideSettlements();
+        DistrictScreen districtScreen = cadastralCostLangRBScreen.goToVlNcaBy_DistrictScreen();
+        districtScreen.selectBaranovichyDistrict();
+        AreasOutsideSettlementsScreen areasOutsideSettlementsScreen = districtScreen.goToVlNcaBy_AreasOutsideSettlementsScreen();
+        areasOutsideSettlementsScreen.selectVelikolykskij();
+        DescriptionParcelScreen descriptionParcelScreen = areasOutsideSettlementsScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(velikolykskij);
+
+        Assert.assertEquals(actualResult, true);
+    }
+
+    /*@Test(priority = 6)
+    public void testTes() throws IOException, InterruptedException{
+
+    }*/
+
+    @Test(priority = 7)
+    public void taxBaseOfLandTax_SearchByCadastralParcelNum()throws IOException, InterruptedException{
+
+        String num1 = "5000000000";
+        String num2 = "08";
+        String num3 = "000952";
+        String cadastralNum = "500000000008000952";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        TaxBaseOfLandTax taxBaseOfLandTax = indexScreen.goToVlNcaBy_TaxBaseOfLandTax();
+        taxBaseOfLandTax.selectCadasralNumberParcel();
+        CadastralNumberParcelLangScreen cadastralNumberParcelLangScreen = taxBaseOfLandTax.goToVlNcaBy_CadastralNumberParcelLangScreen();
+        cadastralNumberParcelLangScreen.insertNum(num1, num2, num3);
+        DescriptionParcelScreen descriptionParcelScreen = cadastralNumberParcelLangScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(cadastralNum);
+
+        Assert.assertEquals(actualResult, true);
+    }
+
+    @Test(priority = 8)
+    public void taxBaseOfLandTax_SearchByLocalityAddress() throws IOException, InterruptedException{
+
+        String cadastralNum = "500000000008000952";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        TaxBaseOfLandTax taxBaseOfLandTax = indexScreen.goToVlNcaBy_TaxBaseOfLandTax();
+        taxBaseOfLandTax.selectLocalityAddress();
+        DistrictScreen districtScreen = taxBaseOfLandTax.goToVlNcaBy_DistrictScreen();
+        districtScreen.selectMinsk();
+        ExactAddressScreen exactAddressScreen = districtScreen.goToVlNcaBy_ExactAddressScreen();
+        exactAddressScreen.selectKrasnozvezdnij();
+        exactAddressScreen.insertHouseNum();
+        ParcelScreen parcelScreen = exactAddressScreen.goToVlNcaBy_ParcelScreen();
+        parcelScreen.selectParcel();
+        DescriptionParcelScreen descriptionParcelScreen = parcelScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(cadastralNum);
+
+        Assert.assertEquals(actualResult, true);
+    }
+
+    @Test(priority = 9)
+    public void taxBaseOfLandTax_SearchByLocalityZoneNumber() throws IOException, InterruptedException{
+
+        String zoneNumber = "22";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        TaxBaseOfLandTax taxBaseOfLandTax = indexScreen.goToVlNcaBy_TaxBaseOfLandTax();
+        taxBaseOfLandTax.selectLocalityZoneNum();
+        CityScreen cityScreen = taxBaseOfLandTax.goToVlNcaBy_CityScreen();
+        cityScreen.selectMinsk();
+        LocalityZoneNumberScreen localityZoneNumberScreen = cityScreen.goToVlNcaBy_LocalityZoneNumber();
+        localityZoneNumberScreen.selectZoneNum();
+        DescriptionParcelScreen descriptionParcelScreen = localityZoneNumberScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(zoneNumber);
+
+        Assert.assertEquals(actualResult, true);
+    }
+
+    @Test(priority = 10)
+    public void taxBaseOfLandTax_SearchByGardenerNamePartnership() throws IOException, InterruptedException{
+        String brestskayaStreet = "Брестская";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        TaxBaseOfLandTax taxBaseOfLandTax = indexScreen.goToVlNcaBy_TaxBaseOfLandTax();
+        taxBaseOfLandTax.selectGardenerPartnerShip();
+        DistrictScreen districtScreen = taxBaseOfLandTax.goToVlNcaBy_DistrictScreen();
+        districtScreen.selectBaranovichyDistrict();
+        GardenerPartnershipScreen gardenerPartnershipScreen = districtScreen.goToVlNcaBy_GardenerPartnershipScreen();
+        gardenerPartnershipScreen.selectStAviatorGardener();
+        DescriptionParcelScreen descriptionParcelScreen = gardenerPartnershipScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(brestskayaStreet);
+
+        Assert.assertEquals(actualResult, true);
+    }
+
+    @Test(priority = 11)
+    public void taxBaseOfLandTax_SearchByAreasOutsideSettlements() throws IOException, InterruptedException{
+        log.info("Кадастровая стоимость земель Республики Беларусь: По территориям вне населенных пунктов, \n" +
+                "садоводческих товариществ, дачного \n" +
+                "строительства");
+        String velikolykskij = "Великолукский с/с";
+
+        IndexScreen indexScreen = (new IndexScreen(driver));
+        TaxBaseOfLandTax taxBaseOfLandTax = indexScreen.goToVlNcaBy_TaxBaseOfLandTax();
+        taxBaseOfLandTax.selectAreasOutsideSettlements();
+        DistrictScreen districtScreen = taxBaseOfLandTax.goToVlNcaBy_DistrictScreen();
+        districtScreen.selectBaranovichyDistrict();
+        AreasOutsideSettlementsScreen areasOutsideSettlementsScreen = districtScreen.goToVlNcaBy_AreasOutsideSettlementsScreen();
+        areasOutsideSettlementsScreen.selectVelikolykskij();
+        DescriptionParcelScreen descriptionParcelScreen = areasOutsideSettlementsScreen.goToVlNcaBy_DescriptionParcelScreen();
+        Thread.sleep(5000);
+        boolean actualResult = descriptionParcelScreen.containsVal(velikolykskij);
+
+        Assert.assertEquals(actualResult, true);
     }
 
     @AfterClass
