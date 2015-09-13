@@ -65,12 +65,6 @@ public class DriverWrapper {
     }
 
     //******************************************************************************************************************
-    public WebElement findElementByText(String text) {
-        String xpath = "//*[contains(text(), '" + text + "')]";
-        return findByXpath(xpath);
-    }
-
-    //******************************************************************************************************************
     public void findByTagName(String xpath){
         WebElement element = driver.findElement(By.tagName(xpath));
         log.info(String.format("Элемент по xpath = %s найден", xpath));

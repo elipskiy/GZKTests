@@ -23,6 +23,7 @@ public class IndexScreen extends BaseIndexScreen {
     private static final String LOGIN_BUTTON   = "//input[@type='submit']";
 
     private static final String COMMON_STATISTICS_BUTTON = "//*[@id=\"sddm\"]/li[2]/a";
+    private static final String SEARCH_BUTTON = "//*[@id=\"sddm\"]/li[3]/a";
     //--------Xpath End------
 
     public void login(String username, String password) {
@@ -35,6 +36,11 @@ public class IndexScreen extends BaseIndexScreen {
     public CommonStatisticsScreen goToCommonStatistics() {
         wrapper.clickByXpath(COMMON_STATISTICS_BUTTON);
         return new CommonStatisticsScreen(driver);
+    }
+
+    public SearchScreen goToSearch() {
+        wrapper.clickByXpath(SEARCH_BUTTON);
+        return new SearchScreen(driver);
     }
 
 }
