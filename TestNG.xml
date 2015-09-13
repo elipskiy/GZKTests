@@ -3,11 +3,11 @@
 <suite name="Sample test suite">
     <test name="Sample Test Demonstrating testNG flow">
             <classes>
-              <class name="nca.Tests.SmokeTest" />
+              <class name="java.by.nca.pr.PrNcaByTest" />
             </classes>
           </test>
     <listeners>
-        <listener class-name="nca.Utils.TestngSeleniumEventsListener"/>
+        <listener class-name="utils.TestngSeleniumEventsListener"/>
     </listeners>
 
 
