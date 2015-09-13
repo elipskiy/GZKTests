@@ -15,19 +15,20 @@ import java.util.List;
 public abstract class WrappedScreen {
 
     public WrappedScreen(WebDriver driver) {
-        new LoadPage().waitForPageLoaded(driver);
+        loadPage.waitForPageLoaded(driver);
         wrapper = new DriverWrapper(driver);
         log = Logger.getLogger(this.getClass());
     }
 
     public DriverWrapper wrapper;
+    public LoadPage loadPage = new LoadPage();
 
     public String getPageTitle() {
         return wrapper.getPageTitle();
     }
 
-    protected List<String> getTextParagraphsUnified(String TEXT_PARAGRAPHS) {
-        List<WebElement> listOfElements = wrapper.findElementsByXpath(TEXT_PARAGRAPHS);
+    protected List<String> getTextParagraphsUnified(String textParagraphs) {
+        List<WebElement> listOfElements = wrapper.findElementsByXpath(textParagraphs);
         List<String> listOfParagraphs = new ArrayList<String>();
         for(WebElement element : listOfElements)
             listOfParagraphs.add(element.getText());

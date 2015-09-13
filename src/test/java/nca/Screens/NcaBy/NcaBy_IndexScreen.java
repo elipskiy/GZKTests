@@ -1,5 +1,6 @@
 package nca.Screens.NcaBy;
 
+import nca.Screens.IndexScreen;
 import nca.Screens.NcaBy.about.NcaBy_AboutCompanyScreen;
 import nca.Screens.NcaBy.certificationSystem.NcaBy_CertificationSystemScreen;
 import nca.Screens.NcaBy.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
@@ -23,32 +24,27 @@ import java.io.IOException;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_IndexScreen {
+public class NcaBy_IndexScreen extends IndexScreen{
 
-    public WebDriver driver;
-    public static final Logger log = Logger.getLogger(NcaBy_IndexScreen.class);
     private static final String MAIN_PAGE_URL = "http://nca.by/";
 
-    public NcaBy_IndexScreen(WebDriver driver) throws IOException {
-        this.driver = driver;
-        driver.get(MAIN_PAGE_URL);
-        new LoadPage().waitForPageLoaded(driver);
-        driver.manage().window().maximize();
+    public NcaBy_IndexScreen(WebDriver driver) {
+        super(driver, MAIN_PAGE_URL);
     }
 
     //--------Xpath----------
-    private static final String ABOUT_COMPANY_LINK = "//a[@href='/rus/about/']";
+    private static final String ABOUT_COMPANY_LINK              = "//a[@href='/rus/about/']";
     private static final String REGISTRATION_ORGANIZATIONS_LINK = "//a[@href='/rus/org/']";
-    private static final String CERTIFICATION_SYSTEM_LINK = "//a[@href='http://esa.nca.by']";
-    private static final String FORUM_LINK = "//a[@href='/_modules/_cforum/phpbb/index.php']";
-    private static final String ELECTRONICAL_APPEAL_LINK = "//b/a[@href='http://nca.by/rus/internetpriemnaya/electronobr/']";
-    private static final String BASE_STATISTICS_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[7]/a";
-    private static final String ELECTRONICAL_SERVICES_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[9]/a";
-    private static final String PUBLIC_CADASTRAL_MAP = "//*[@id=\"container\"]/div/div[3]/div[3]/div[11]/a";
-    private static final String STREET_NAMES_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[13]/a";
-    private static final String LAND_TAXES_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[15]/a";
-    private static final String ELECTRONICAL_INTERACTION_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[17]/a";
-    private static final String SUPPORT_LINK = "//*[@id=\"container\"]/div/div[3]/div[3]/div[19]/a";
+    private static final String CERTIFICATION_SYSTEM_LINK       = "//a[@href='http://esa.nca.by']";
+    private static final String FORUM_LINK                      = "//a[@href='/_modules/_cforum/phpbb/index.php']";
+    private static final String ELECTRONICAL_APPEAL_LINK        = "//b/a[@href='http://nca.by/rus/internetpriemnaya/electronobr/']";
+    private static final String BASE_STATISTICS_LINK            = "//*[@id=\"container\"]/div/div[3]/div[3]/div[7]/a";
+    private static final String ELECTRONICAL_SERVICES_LINK      = "//*[@id=\"container\"]/div/div[3]/div[3]/div[9]/a";
+    private static final String PUBLIC_CADASTRAL_MAP            = "//*[@id=\"container\"]/div/div[3]/div[3]/div[11]/a";
+    private static final String STREET_NAMES_LINK               = "//*[@id=\"container\"]/div/div[3]/div[3]/div[13]/a";
+    private static final String LAND_TAXES_LINK                 = "//*[@id=\"container\"]/div/div[3]/div[3]/div[15]/a";
+    private static final String ELECTRONICAL_INTERACTION_LINK   = "//*[@id=\"container\"]/div/div[3]/div[3]/div[17]/a";
+    private static final String SUPPORT_LINK                    = "//*[@id=\"container\"]/div/div[3]/div[3]/div[19]/a";
 
     //--------Xpath End------
 
