@@ -7,7 +7,9 @@ import net.sourceforge.htmlunit.corejs.javascript.JavaScriptException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.awt.*;
@@ -16,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertNotNull;
 
@@ -28,11 +31,13 @@ import static org.testng.AssertJUnit.assertNotNull;
 public class DriverWrapper {
     public static final Logger log = Logger.getLogger(DriverWrapper.class);
     private WebDriver driver;
+    private WebDriverWait wait;
 
     public static final String HTTP_ADDRESS = "http://nka_rh:8080/signin.html";
 
     public DriverWrapper(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 30);
     }
 
     public WebDriver getDriver() {
@@ -79,6 +84,8 @@ public class DriverWrapper {
 
     //******************************************************************************************************************
     public void clickByXpath(String xpath){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         WebElement element = driver.findElement(By.xpath(xpath));
         log.info(String.format("Элемент по xpath = %s найден", xpath));
         element.click();
@@ -96,6 +103,7 @@ public class DriverWrapper {
 
     //******************************************************************************************************************
     public void sendKeysByXpath(String xpath, String text ) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         WebElement element = driver.findElement(By.xpath(xpath));
         log.info(String.format("Элемент по xpath = %s найден", xpath));
         element.sendKeys(text);
@@ -297,10 +305,11 @@ public class DriverWrapper {
 
     //******************************************************************************************************************
     public void scrollDown(String xpath)  {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         WebElement element = driver.findElement(By.xpath(xpath));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();"
+                    , element);
 
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
-                ,element);
 
     }
 

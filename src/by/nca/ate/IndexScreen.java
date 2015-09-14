@@ -1,15 +1,17 @@
-package by.nca.rzo;
+package by.nca.ate;
 
 import by.nca.BaseIndexScreen;
-import utils.DriverWrapper;
+import by.nca.rzo.AnalysisScreen;
+import by.nca.rzo.CommonStatisticsScreen;
+import by.nca.rzo.SearchScreen;
 import org.openqa.selenium.WebDriver;
+import utils.DriverWrapper;
 
 /**
- * Created by mugi4_000 on 13.09.2015.
+ * Created by mugi4_000 on 14.09.2015.
  */
 public class IndexScreen extends BaseIndexScreen {
-
-    private static final String MAIN_PAGE_URL = "http://rzo.nca.by";
+    private static final String MAIN_PAGE_URL = "http://ate.nca.by";
     private DriverWrapper wrapper;
 
     public IndexScreen(WebDriver driver) {
@@ -18,13 +20,15 @@ public class IndexScreen extends BaseIndexScreen {
     }
 
     //--------Xpath----------
-    private static final String USERNAME_FIELD = "//input[@name='login']";
-    private static final String PASSWORD_FIELD = "//input[@name='pw']";
-    private static final String LOGIN_BUTTON   = "//input[@type='submit']";
+    private static final String USERNAME_FIELD    = "//input[@name='user_login']";
+    private static final String PASSWORD_FIELD    = "//input[@name='user_pass']";
+    private static final String LOGIN_BUTTON      = "//*[@id='logon_btn']";
 
-    private static final String COMMON_STATISTICS_BUTTON = "//*[@id=\"sddm\"]/li[2]/a";
-    private static final String SEARCH_BUTTON            = "//*[@id=\"sddm\"]/li[3]/a";
-    private static final String ANALYSIS_BUTTON          = "//*[@id=\"sddm\"]/li[4]/a";
+    private static final String NAME_BUTTON       = "//*[@id='search_type_1']";
+    private static final String CATEGORY_BUTTON   = "//*[@id='search_type_2']";
+    private static final String REGNUMBER_BUTTON  = "//*[@id='search_type_3']";
+    private static final String SOATO_CODE_BUTTON = "//*[@id='search_type_4']";
+
     //--------Xpath End------
 
     public void login(String username, String password) {
@@ -34,10 +38,6 @@ public class IndexScreen extends BaseIndexScreen {
         loadPage.waitForPageLoaded(driver);
     }
 
-    public CommonStatisticsScreen goToCommonStatistics() {
-        wrapper.clickByXpath(COMMON_STATISTICS_BUTTON);
-        return new CommonStatisticsScreen(driver);
-    }
 
     public SearchScreen goToSearch() {
         wrapper.clickByXpath(SEARCH_BUTTON);
