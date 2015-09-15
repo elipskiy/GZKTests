@@ -26,6 +26,8 @@ public class SupportNcaSgdScreen extends BaseIndexScreen {
     private static final String LOGIN_BUTTON   = "//input[@value='Войти']";
 
     private static final String TEXT_HEADER    = "//body/form/div/b/font"; //Закладные
+
+    private static final String FRAME    = "//html/frameset/frameset[2]/frame[1]";
     //--------Xpath End------
 
     public Map login (String username, String password) {
@@ -34,6 +36,7 @@ public class SupportNcaSgdScreen extends BaseIndexScreen {
         wrapper.sendKeysByXpath(PASSWORD_FIELD, password);
         wrapper.clickByXpath(LOGIN_BUTTON);
         loadPage.waitForPageLoaded(wrapper.getDriver());
+        wrapper.switchFrame(wrapper.findByXpath(FRAME));
         map.put("Title", wrapper.getPageTitle());
         map.put("Header", wrapper.getTextByXpath(TEXT_HEADER));
         return map;

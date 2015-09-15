@@ -39,7 +39,7 @@ public class SupportNcaByTest extends BaseTest {
         return new Object[][]{
                 {
                         "ГУП НКА / Архивная открытая информационная система",
-                        Arrays.asList("Документация", "Последние документы", "Несформированные дела", "Поиск", "Сформировать отчёт")
+                        Arrays.asList("Дата помещения", "Заголовок", "Кадастровый/Инвентарный номер", "Адрес", "ФИО архивиста")
                 }
         };
     }
@@ -82,7 +82,7 @@ public class SupportNcaByTest extends BaseTest {
     public Object[][] LibNcaData() {
         return new Object[][]{
                 {
-                        "ГУП НКА / Открытая архивная информационная система",
+                        "ГУП НКА / Архивная открытая информационная система",
                         "Реестр"
                 }
         };
@@ -128,7 +128,7 @@ public class SupportNcaByTest extends BaseTest {
 
     //------------Test case #6-----------------
 
-    @Test(priority = 0)
+    @Test(priority = 6)
     public void viewPage_SupportNcaRs() throws InterruptedException, IOException {
         String expectedResult = "ГУП НКА / Автоматизированная информационная система государственной регистрации заключений об оценке недвижимого имущества";
         SupportNcaRs_IndexScreen indexScreen = (new SupportNcaRs_IndexScreen(driver));
