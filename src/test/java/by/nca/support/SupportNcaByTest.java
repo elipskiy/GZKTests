@@ -1,10 +1,12 @@
 package by.nca.support;
 
 import by.nca.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.PageScreenShot;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -74,7 +76,7 @@ public class SupportNcaByTest extends BaseTest {
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
     }
 
-    //------------Test case #1-----------------
+    //------------Test case #3-----------------
 
     @DataProvider
     public Object[][] LibNcaData() {
@@ -86,7 +88,7 @@ public class SupportNcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = 0, dataProvider = "LibNcaData")
+    @Test(priority = 3, dataProvider = "LibNcaData")
     public void goToLibNca(String expectedTitle, String expectedHeader) throws IOException {
 
         SupportNcaLibScreen ncaLibScreen = new SupportNcaLibScreen(driver);
@@ -94,6 +96,48 @@ public class SupportNcaByTest extends BaseTest {
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
+    }
+
+    //------------Test case #4-----------------
+
+    @Test(priority = 4)
+    public void viewPage_SupportNcaEs() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / NKA_E-Services / Предоставление сведений из ЕГРНИ исполнительным и распорядительным органам";
+        SupportNcaEs_IndexScreen indexScreen = (new SupportNcaEs_IndexScreen(driver));
+        SupportNcaEs_MainScreen mainScreen = indexScreen.goToSupportNcaEs_MainScreen();
+        Thread.sleep(500);
+        PageScreenShot screenshot = new PageScreenShot(driver);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    //------------Test case #5-----------------
+
+    @Test(priority = 5)
+    public void viewPage_SupportNcaSf() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / NKA_SF";
+        SupportNcaSf_IndexScreen indexScreen = (new SupportNcaSf_IndexScreen(driver));
+        SupportNcaSf_MainScreen mainScreen = indexScreen.goToSupportNcaSf_MainScreen();
+        Thread.sleep(500);
+        PageScreenShot screenshot = new PageScreenShot(driver);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    //------------Test case #6-----------------
+
+    @Test(priority = 0)
+    public void viewPage_SupportNcaRs() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / Автоматизированная информационная система государственной регистрации заключений об оценке недвижимого имущества";
+        SupportNcaRs_IndexScreen indexScreen = (new SupportNcaRs_IndexScreen(driver));
+        SupportNcaRs_MainScreen mainScreen = indexScreen.goToSupportNcaRs_MainScreen();
+        Thread.sleep(500);
+        PageScreenShot screenshot = new PageScreenShot(driver);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
 }
