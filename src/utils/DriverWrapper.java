@@ -150,7 +150,7 @@ public class DriverWrapper {
         log.info(String.format("Элемент по xpath = %s найден", xpath));
         String result = element.getText();
         log.info(String.format("Элемент c  xpath = %s содержит текст: %s", xpath, result));
-        return result;
+        return result.trim();
     }
 
     //******************************************************************************************************************
