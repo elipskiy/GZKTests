@@ -22,12 +22,15 @@ public class SupportNcaByTest extends BaseTest {
     public void getNewDriver()	{
         getDriver();
         nullErrors();
+        screenshot = new PageScreenShot(driver);
     }
 
     @AfterMethod
     public void closeBrowser()	{
         driver.quit();
     }
+
+    private PageScreenShot screenshot;
 
     private final static String USERNAME = "Test TOR";
     private final static String PASSWORD = "123456";
@@ -45,10 +48,12 @@ public class SupportNcaByTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "EdNcaData")
-    public void goToEdNca(String expectedTitle, List expectedElements) throws IOException {
+    public void goToEdNca(String expectedTitle, List expectedElements) throws IOException, InterruptedException {
 
         SupportNcaEdScreen ncaEdScreen = new SupportNcaEdScreen(driver);
         Map map = ncaEdScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Elements"), expectedElements, "Элементы бокового меню не соответствуют ожидаемым");
@@ -67,10 +72,12 @@ public class SupportNcaByTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = "SgdNcaData")
-    public void goToSgdNca(String expectedTitle, String expectedHeader) throws IOException {
+    public void goToSgdNca(String expectedTitle, String expectedHeader) throws IOException, InterruptedException {
 
         SupportNcaSgdScreen ncaSgdScreen = new SupportNcaSgdScreen(driver);
         Map map = ncaSgdScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -89,10 +96,12 @@ public class SupportNcaByTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = "LibNcaData")
-    public void goToLibNca(String expectedTitle, String expectedHeader) throws IOException {
+    public void goToLibNca(String expectedTitle, String expectedHeader) throws IOException, InterruptedException {
 
         SupportNcaLibScreen ncaLibScreen = new SupportNcaLibScreen(driver);
         Map map = ncaLibScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -106,7 +115,6 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaEs_IndexScreen indexScreen = (new SupportNcaEs_IndexScreen(driver));
         SupportNcaEs_MainScreen mainScreen = indexScreen.goToSupportNcaEs_MainScreen();
         Thread.sleep(500);
-        PageScreenShot screenshot = new PageScreenShot(driver);
         screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
         String actualResult = mainScreen.getTitle();
         Assert.assertEquals(actualResult, expectedResult);
@@ -120,7 +128,6 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaSf_IndexScreen indexScreen = (new SupportNcaSf_IndexScreen(driver));
         SupportNcaSf_MainScreen mainScreen = indexScreen.goToSupportNcaSf_MainScreen();
         Thread.sleep(500);
-        PageScreenShot screenshot = new PageScreenShot(driver);
         screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
         String actualResult = mainScreen.getTitle();
         Assert.assertEquals(actualResult, expectedResult);
@@ -134,7 +141,6 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaRs_IndexScreen indexScreen = (new SupportNcaRs_IndexScreen(driver));
         SupportNcaRs_MainScreen mainScreen = indexScreen.goToSupportNcaRs_MainScreen();
         Thread.sleep(500);
-        PageScreenShot screenshot = new PageScreenShot(driver);
         screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
         String actualResult = mainScreen.getTitle();
         Assert.assertEquals(actualResult, expectedResult);
