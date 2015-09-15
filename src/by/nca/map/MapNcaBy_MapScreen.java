@@ -24,7 +24,6 @@ public class MapNcaBy_MapScreen {
     //--------Xpath----------
     private static final String LAND_CHECKBOX = "//*[@id=\"dijit_form_CheckBox_36\"]";
     private static final String ZOOM_ON_BTN = "//*[@id=\"map_zoom_slider\"]/tbody/tr[1]/td[2]/div";
-    private static final String REPORT_BY_CBD = "//*[@id=\"ctl00_ContentPlaceHolder1_carTabPage_T2T\"]/span";
     //--------End Xpath------
 
     public void selectLand(){
