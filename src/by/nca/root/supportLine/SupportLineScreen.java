@@ -1,4 +1,4 @@
-package by.nca.root.electronicalInteraction;
+package by.nca.root.supportLine;
 
 import by.nca.WrappedScreen;
 import org.openqa.selenium.WebDriver;
@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 10.09.2015.
  */
-public class NcaBy_ElectronicalInteractionScreen extends WrappedScreen {
+public class SupportLineScreen extends WrappedScreen {
 
-    public NcaBy_ElectronicalInteractionScreen(WebDriver driver) {
+    public SupportLineScreen(WebDriver driver) {
         super(driver);
     }
 
     //--------Xpath----------
-    private static final String TEXT_HEADER = "//*[@id=\"container\"]/div/div[5]/div[4]/div/div[1]/h1/a[2]";
+    private static final String TEXT_HEADER = "//*[@id=\"container\"]/div/div[5]/div[4]/div/div[1]/h1/a";
     //--------Xpath End------
 
     public String getTextHeader() {

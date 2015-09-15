@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Created by mugi4_000 on 08.09.2015.
  */
-public class NcaBy_CertificationSystemScreen extends WrappedScreen {
+public class CertificationSystemScreen extends WrappedScreen {
 
-    public NcaBy_CertificationSystemScreen(WebDriver driver) {
+    public CertificationSystemScreen(WebDriver driver) {
         super(driver);
     }
 

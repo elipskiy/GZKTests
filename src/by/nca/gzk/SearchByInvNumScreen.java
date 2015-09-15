@@ -21,7 +21,7 @@ public class SearchByInvNumScreen {
 
     //--------Xpath----------
     private static final String ORGANISATION_CODE_FIELD = "//input[@id='select_org']";
-    private static final String TYPE_IN_C_RADIO_BTN = "//input[@id='select_type']";
+    private static final String TYPE_IN_C_RADIO_BTN = "//input[@id='select_type_1']";
     private static final String INV_NUM_FIELD = "//input[@id='select_num']";
     private static final String FIND_BTN = "//a[@onclick='doInvSearch()']";
     //--------Xpath End------

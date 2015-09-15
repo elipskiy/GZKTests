@@ -1,5 +1,7 @@
 package by.nca.pr;
 
+import by.nca.BaseIndexScreen;
+import utils.DriverWrapper;
 import utils.LoadPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,17 +14,16 @@ import java.io.IOException;
 /**
  * Created by eviltech on 12.09.2015.
  */
-public class IndexScreen {
+public class IndexScreen extends BaseIndexScreen {
     public WebDriver driver;
+    public DriverWrapper wrapper;
     public static final Logger log = Logger.getLogger(IndexScreen.class);
     private static final String MAIN_PAGE_URL = "http://pr.nca.by/";
 
     public IndexScreen(WebDriver driver) throws IOException {
+        super(driver, MAIN_PAGE_URL);
         this.driver = driver;
-        LoadPage loadPage = new LoadPage();
-        driver.get(MAIN_PAGE_URL);
-        loadPage.waitForPageLoaded(driver);
-        driver.manage().window().maximize();
+        wrapper = new DriverWrapper(driver);
     }
 
     //--------Xpath----------
@@ -43,71 +44,65 @@ public class IndexScreen {
     //--------Xpath End------
 
     public void scrollDownToIsolatedRoom()  {
-        WebElement element = driver.findElement(By.xpath(ISOLATED_ROOM_RADIO_BTN));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
-                ,element);
+        wrapper.scrollDown(ISOLATED_ROOM_RADIO_BTN);
     }
 
     public void selectIsolatedRoom(){
-        driver.findElement(By.xpath(ISOLATED_ROOM_RADIO_BTN)).click();
+        wrapper.clickByXpath(ISOLATED_ROOM_RADIO_BTN);
     }
 
     public void clickSettelments(){
-        driver.findElement(By.xpath(SETTELMENTS_MENU)).click();
+        wrapper.clickByXpath(SETTELMENTS_MENU);
     }
 
     public void clickBrestskaya(){
-        driver.findElement(By.xpath(BRESTSKAYA_DISTRICT_MENU)).click();
+        wrapper.clickByXpath(BRESTSKAYA_DISTRICT_MENU);
     }
 
     public void clickBaranovichi(){
-        driver.findElement(By.xpath(BARANOVICHI_MENU)).click();
+        wrapper.clickByXpath(BARANOVICHI_MENU);
     }
 
     public void insertDateTransactionOf(){
-        driver.findElement(By.xpath(DATE_OF_TRANSACTION_OF)).clear();
-        driver.findElement(By.xpath(DATE_OF_TRANSACTION_OF)).sendKeys("01.05.2015");
+        wrapper.clear(DATE_OF_TRANSACTION_OF);
+        wrapper.sendKeysByXpath(DATE_OF_TRANSACTION_OF, "01.05.2015");
     }
 
     public void insertDateTransactionTo(){
-        driver.findElement(By.xpath(DATE_OF_TRANSACTION_TO)).clear();
-        driver.findElement(By.xpath(DATE_OF_TRANSACTION_TO)).sendKeys("02.05.2015");
+        wrapper.clear(DATE_OF_TRANSACTION_TO);
+        wrapper.sendKeysByXpath(DATE_OF_TRANSACTION_TO, "02.05.2015");
     }
 
     public void scrollDownToFindBtn()  {
-        WebElement element = driver.findElement(By.xpath(FIND_BTN));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
-                , element);
+        wrapper.scrollDown(FIND_BTN);
     }
 
     public void clickFindBtn(){
-        driver.findElement(By.xpath(FIND_BTN)).click();
+        wrapper.clickByXpath(FIND_BTN);
     }
 
     public void scrollUpToShowBtn()  {
-        WebElement element = driver.findElement(By.xpath(SHOW_BTN));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
-                , element);
+        wrapper.scrollDown(SHOW_BTN);
     }
 
     public void clickShowBtn(){
-        driver.findElement(By.xpath(SHOW_BTN)).click();
+        wrapper.clickByXpath(SHOW_BTN);
     }
 
     public void insertUsername(){
-        driver.findElement(By.xpath(USERNAME_FIELD)).sendKeys("monitoring");
+        wrapper.sendKeysByXpath(USERNAME_FIELD, "monitoring");
     }
 
     public void insertPassword(){
-        driver.findElement(By.xpath(PASSWORD_FIELD)).sendKeys("v1baap9vl");
+        wrapper.sendKeysByXpath(PASSWORD_FIELD, "v1baap9vl");
     }
 
     public void clickEnter(){
-        driver.findElement(By.xpath(ENTER_BTN)).click();
+        wrapper.clickByXpath(ENTER_BTN);
     }
 
     public void closeAlertWindow(){
-        driver.switchTo().alert().accept();
+        wrapper.closeAlertWindow();
     }
 
 

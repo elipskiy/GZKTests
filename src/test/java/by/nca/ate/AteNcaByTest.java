@@ -40,7 +40,7 @@ public class AteNcaByTest extends BaseTest {
         IndexScreen indexScreen = new IndexScreen(driver);
         indexScreen.login(USERNAME, PASSWORD);
         List result = indexScreen.searchByName(city);
-        indexScreen.takeScreen("ateNcaBy_Поиск по наименованию");
+        screenshot.takeScreenShot("ateNcaBy_Поиск по наименованию");
         assertTrue(!result.isEmpty(), "Выходная таблица пуста");
     }
 
@@ -52,7 +52,7 @@ public class AteNcaByTest extends BaseTest {
         IndexScreen indexScreen = new IndexScreen(driver);
         indexScreen.login(USERNAME, PASSWORD);
         List result = indexScreen.searchByCategory();
-        indexScreen.takeScreen("ateNcaBy_Поиск по категории и расположению");
+        screenshot.takeScreenShot("ateNcaBy_Поиск по категории и расположению");
         assertTrue(!result.isEmpty(), "Выходная таблица пуста");
     }
 
@@ -65,7 +65,7 @@ public class AteNcaByTest extends BaseTest {
         IndexScreen indexScreen = new IndexScreen(driver);
         indexScreen.login(USERNAME, PASSWORD);
         List result = indexScreen.searchByRegistrationNumber(regNumber);
-        indexScreen.takeScreen("ateNcaBy_Поиск по регистрационному номеру");
+        screenshot.takeScreenShot("ateNcaBy_Поиск по регистрационному номеру");
         assertTrue(!result.isEmpty(), "Выходная таблица пуста");
     }
 
@@ -78,7 +78,7 @@ public class AteNcaByTest extends BaseTest {
         IndexScreen indexScreen = new IndexScreen(driver);
         indexScreen.login(USERNAME, PASSWORD);
         List result = indexScreen.searchBySOATOCode(code);
-        indexScreen.takeScreen("ateNcaBy_Поиск по коду СОАТО");
+        screenshot.takeScreenShot("ateNcaBy_Поиск по коду СОАТО");
         assertTrue(!result.isEmpty(), "Выходная таблица пуста");
     }
 

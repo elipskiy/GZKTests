@@ -12,15 +12,15 @@ import java.util.List;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_LegalBaseScreen {
-    public NcaBy_LegalBaseScreen(WebDriver driver) {
+public class ObjectivesAndFunctionsScreen {
+    public ObjectivesAndFunctionsScreen(WebDriver driver) {
         new LoadPage().waitForPageLoaded(driver);
         wrapper = new DriverWrapper(driver);
     }
 
     DriverWrapper wrapper;
 
-    public static final Logger log = Logger.getLogger(NcaBy_LegalBaseScreen.class);
+    public static final Logger log = Logger.getLogger(ObjectivesAndFunctionsScreen.class);
 
     //--------Xpath----------
     private static final String TEXT_HEADER = "//div[@class='path']/h1/a";

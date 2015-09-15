@@ -56,7 +56,7 @@ public class ErgiNcaByTest extends BaseTest {
         pageUrl    = indexScreen.getPageUrl();
         pageTitle  = indexScreen.getPageTitle();
 
-        indexScreen.takeScreen("ergiRcaBy_Отображение страницы_Поиск субъектов");
+        screenshot.takeScreenShot("ergiRcaBy_Отображение страницы_Поиск субъектов");
 
         assertEqualsContinue(pageUrl, subjectExpectedUrl, "URL страницы неверный");
         assertEqualsContinue(pageTitle, subjectExpectedTitle, "Название страницы не соответствует ожидаемому");
@@ -68,7 +68,7 @@ public class ErgiNcaByTest extends BaseTest {
         pageUrl    = indexScreen.getPageUrl();
         pageTitle  = indexScreen.getPageTitle();
 
-        indexScreen.takeScreen("ergiRcaBy_Отображение страницы_Типы выходных форм");
+        screenshot.takeScreenShot("ergiRcaBy_Отображение страницы_Типы выходных форм");
 
         assertEqualsContinue(pageUrl, printExpectedUrl, "URL страницы неверный");
         assertEqualsContinue(pageTitle, printExpectedTitle, "Название страницы не соответствует ожидаемому");

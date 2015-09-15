@@ -2,17 +2,17 @@ package by.nca.root;
 
 import by.nca.BaseTest;
 import by.nca.root.about.*;
-import by.nca.root.certificationSystem.NcaBy_CertificationSystemScreen;
-import by.nca.root.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
-import by.nca.root.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
-import by.nca.root.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
-import by.nca.root.electronicalServices.NcaBy_ElectronicalServicesScreen;
-import by.nca.root.forum.NcaBy_ForumScreen;
-import by.nca.root.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
-import by.nca.root.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
-import by.nca.root.streetNames.NcaBy_StreetNamesScreen;
-import by.nca.root.supportLine.NcaBy_SupportLineScreen;
-import by.nca.root.taxesBase.NcaBy_LandTaxesBaseScreen;
+import by.nca.root.certificationSystem.CertificationSystemScreen;
+import by.nca.root.databaseStatistics.DatabaseStatisticsScreen;
+import by.nca.root.electronicalAppeal.SendElectronicalAppealScreen;
+import by.nca.root.electronicalInteraction.ElectronicalInteractionScreen;
+import by.nca.root.electronicalServices.ElectronicalServicesScreen;
+import by.nca.root.forum.ForumScreen;
+import by.nca.root.publicCadastralMap.PublicCadastralMapScreen;
+import by.nca.root.registrationOrganizations.RegistrationOrganizationsScreen;
+import by.nca.root.streetNames.StreetNamesScreen;
+import by.nca.root.supportLine.SupportLineScreen;
+import by.nca.root.taxesBase.LandTaxesBaseScreen;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -111,12 +111,13 @@ public class NcaByTest extends BaseTest {
 
     @Test(priority = 1, dataProvider = "aboutCompanyData")
     public void goToAboutCompanyPage(String expectedTitle, String expectedHeader, List<String> expectedParagraphs) throws IOException {
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
 
         String pageTitle = aboutCompany.getPageTitle();
         String pageHeader = aboutCompany.getTextHeader();
         List<String> pageParagraphs = aboutCompany.getTextParagraphs();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- О предприятии");
         assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не совпадает с эталонным");
         assertEquals(pageParagraphs, expectedParagraphs, "Разделы текста не совпадают с эталонными");
@@ -125,13 +126,14 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 2, dataProvider = "directorshipData")
     public void goToDirectorshipPage(String expectedTitle, String expectedHeader, List<String> expectedParagraphs) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
-        NcaBy_DirectorshipScreen directorshipScreen = aboutCompany.goToNcaBy_Directorship();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
+        DirectorshipScreen directorshipScreen = aboutCompany.goToNcaBy_Directorship();
 
         String pageTitle = directorshipScreen.getPageTitle();
         String pageHeader = directorshipScreen.getTextHeader();
         List<String> pageParagraphs = directorshipScreen.getTextParagraphs();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- О предприятии");
         assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не совпадает с эталонным");
         assertEquals(pageParagraphs, expectedParagraphs, "Разделы текста не совпадают с эталонными");
@@ -140,13 +142,14 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 3, dataProvider = "structureData")
     public void goToStructurePage(String expectedTitle, String expectedHeader, String expectedParagraphs) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
-        NcaBy_StructureScreen structureScreen = aboutCompany.goToNcaBy_Structure();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
+        StructureScreen structureScreen = aboutCompany.goToNcaBy_Structure();
 
         String pageTitle = structureScreen.getPageTitle();
         String pageHeader = structureScreen.getTextHeader();
         String pageParagraphs = structureScreen.getTextParagraph();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- О предприятии");
         assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не совпадает с эталонным");
         assertEquals(pageParagraphs, expectedParagraphs, "Разделы текста не совпадают с эталонными");
@@ -155,13 +158,14 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 4, dataProvider = "functionsData")
     public void goToObjectivesAndFunctionsPage(String expectedTitle, String expectedHeader, List<String> expectedParagraphs) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
-        NcaBy_ObjectivesAndFunctionsScreen functionsScreen = aboutCompany.goToNcaBy_ObjectivesAndFunctions();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
+        ObjectivesAndFunctionsScreen functionsScreen = aboutCompany.goToNcaBy_ObjectivesAndFunctions();
 
         String pageTitle = functionsScreen.getPageTitle();
         String pageHeader = functionsScreen.getTextHeader();
         List<String> pageParagraphs = functionsScreen.getTextParagraphs();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- О предприятии");
         assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не совпадает с эталонным");
         assertEquals(pageParagraphs, expectedParagraphs, "Разделы текста не совпадают с эталонными");
@@ -170,13 +174,14 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 5, dataProvider = "legalData")
     public void goToLegalBasePage(String expectedTitle, String expectedHeader, List<String> expectedParagraphs) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
-        NcaBy_LegalBaseScreen legalBaseScreen = aboutCompany.goToNcaBy_LegalBase();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        AboutCompanyScreen aboutCompany = indexScreen.goToNcaBy_AboutCompany();
+        LegalBaseScreen legalBaseScreen = aboutCompany.goToNcaBy_LegalBase();
 
         String pageTitle = legalBaseScreen.getPageTitle();
         String pageHeader = legalBaseScreen.getTextHeader();
         List<String> pageParagraphs = legalBaseScreen.getTextParagraphs();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- О предприятии");
         assertEquals(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не совпадает с эталонным");
         assertEquals(pageParagraphs, expectedParagraphs, "Разделы текста не совпадают с эталонными");
@@ -213,44 +218,61 @@ public class NcaByTest extends BaseTest {
                                                                       String minskRegionUnitsTitle, String mogilevUrl,
                                                                       String mogilevTitle) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_RegistrationOrganizationsScreen registrationOrganizationsScreen = indexScreen.goToNcaBy_RegistrationOrganizations();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        RegistrationOrganizationsScreen registrationOrganizationsScreen = indexScreen.goToNcaBy_RegistrationOrganizations();
 
         String pageTitle = registrationOrganizationsScreen.getPageTitle();
         List<String> pageLinks = registrationOrganizationsScreen.getLinksList();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Организации по регистрации");
         assertEqualsContinue(pageTitle, expectedTitle, "Название страницы не совпадает с эталонным");
         assertEqualsContinue(pageLinks, expectedLinks, "Список ссылок не соответствует ожидаемому");
 
         Map<String,String> valuesMap;
         valuesMap = registrationOrganizationsScreen.goToBrestLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Брест");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), brestUrl, "Страница Брестского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), brestTitle, "Страница Брестского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToVitebskLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Витебск");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), vitebskUrl, "Страница Витебского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), vitebskTitle, "Страница Витебского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToGomelLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Гомель");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), gomelUrl, "Страница Гомельского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), gomelTitle, "Страница Гомельского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToGrodnoLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Гродно");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), grodnoUrl, "Страница Гродненского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), grodnoTitle, "Страница Гродненского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Минск");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), minskUrl, "Страница Минского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), minskTitle, "Страница Минского агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskRegionMainLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Минское областное");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), minskRegionMainUrl, "Страница Минского основного областного агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), minskRegionMainTitle, "Страница Минского основного областного агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMinskRegionStructureUnitsLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Подразделения Минского областного");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), minskRegionUnitsUrl, "Страница струкутурных подразделений Минского областного агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), minskRegionUnitsTitle, "Страница струкутурных подразделений Минского областного агенства: неверный адрес");
 
         valuesMap = registrationOrganizationsScreen.goToMogilevLink();
+        screenshot.takeScreenShot("ncaBy_Case_2_Могилев");
+        registrationOrganizationsScreen.goBack();
         assertEqualsContinue(valuesMap.get("URL"), mogilevUrl, "Страница Могилёвского агентства: неверный адрес");
         assertEqualsContinue(valuesMap.get("Title"), mogilevTitle, "Страница Могилёвского агенства: неверный адрес");
 
@@ -271,11 +293,12 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 7, dataProvider = "certificationData")
     public void goToCertificationSystem(String expectedTitle, List<String> expectedParagraphs) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_CertificationSystemScreen certificationSystemScreen = indexScreen.goToNcaBy_CertificationScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        CertificationSystemScreen certificationSystemScreen = indexScreen.goToNcaBy_CertificationScreen();
 
         String pageTitle = certificationSystemScreen.getPageTitle();
         List<String> pageParagraphs = certificationSystemScreen.getTextParagraphs();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Система аттестации");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageParagraphs, expectedParagraphs, "Содержимое страницы не соотетствует ожидаемому");
@@ -296,12 +319,13 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 8, dataProvider = "forumData")
     public void goToForuссmSystem(String expectedTitle, String expectedHeader, String expectedForumText) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_ForumScreen forumScreen = indexScreen.goToNcaBy_ForumScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        ForumScreen forumScreen = indexScreen.goToNcaBy_ForumScreen();
 
         String pageTitle = forumScreen.getPageTitle();
         String pageHeader = forumScreen.getTextHeader();
         String pageForumText = forumScreen.getForumText();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Форум");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -323,12 +347,13 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 9, dataProvider = "electronicalAppealData")
     public void goToElectronicalAppeal(String expectedTitle, String expectedHeader, String expectedLinkText) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_SendElectronicalAppealScreen appealScreen = indexScreen.goToNcaBy_ElectronicalAppealScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        SendElectronicalAppealScreen appealScreen = indexScreen.goToNcaBy_ElectronicalAppealScreen();
 
         String pageTitle = appealScreen.getPageTitle();
         String pageHeader = appealScreen.getTextHeader();
         String pageLinkText = appealScreen.getSendLinkText();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Отправить электронное обращение");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -349,11 +374,12 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 10, dataProvider = "databaseStatisticsData")
     public void goToDatabaseStatistics(String expectedTitle, String expectedHeader) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_DatabaseStatisticsScreen databaseStatisticsScreen = indexScreen.goToNcaBy_DatabaseStatisticsScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        DatabaseStatisticsScreen databaseStatisticsScreen = indexScreen.goToNcaBy_DatabaseStatisticsScreen();
 
         String pageTitle = databaseStatisticsScreen.getPageTitle();
         String pageHeader = databaseStatisticsScreen.getTextHeader();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Статистика обновления центральной базы данных ЕГРНИ");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -373,11 +399,12 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 11, dataProvider = "electronicalServicesData")
     public void goToElectronicalServices(String expectedTitle, String expectedHeader) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_ElectronicalServicesScreen electronicalServicesScreen = indexScreen.goToNcaBy_ElectronicalServicesScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        ElectronicalServicesScreen electronicalServicesScreen = indexScreen.goToNcaBy_ElectronicalServicesScreen();
 
         String pageTitle = electronicalServicesScreen.getPageTitle();
         String pageHeader = electronicalServicesScreen.getTextHeader();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Электронные услуги");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -395,10 +422,11 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 12, dataProvider = "cadastralMapData")
     public void goToPublicCadastralMap(String expectedUrl) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_PublicCadastralMapScreen cadastralMapScreen = indexScreen.goToNcaBy_PublicCadastralMapScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        PublicCadastralMapScreen cadastralMapScreen = indexScreen.goToNcaBy_PublicCadastralMapScreen();
 
         String pageUrl = cadastralMapScreen.getUrl();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Публичная кадастровая карта");
 
         assertEquals(pageUrl, expectedUrl, "Неверная URL страницы");
     }
@@ -420,11 +448,12 @@ public class NcaByTest extends BaseTest {
     public void goToStreetNames(String expectedTitleStreets, String expectedHeaderStreets, String expectedUrlElements,
                                 String expectedTitleRecommendations, String expectedHeaderRecommendations) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_StreetNamesScreen streetNamesScreen = indexScreen.goToNcaBy_StreetNamesScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        StreetNamesScreen streetNamesScreen = indexScreen.goToNcaBy_StreetNamesScreen();
 
         String pageTitle = streetNamesScreen.getPageTitle();
         String pageHeader = streetNamesScreen.getTextHeader();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Наименования улиц и элементов улично-дорожной сети");
 
         assertEqualsContinue(pageTitle, expectedTitleStreets, "Неверное название страницы");
         assertEqualsContinue(pageHeader, expectedHeaderStreets, "Заголовок страницы не соотетствует ожидаемому");
@@ -432,9 +461,11 @@ public class NcaByTest extends BaseTest {
         Map<String, String> valueMap;
 
         valueMap = streetNamesScreen.goToElementsPage();
+        screenshot.takeScreenShot("ncaBy_Наименования улиц и элементов улично-дорожной сети- Наименование элементов улично-дорожной сети");
         assertEqualsContinue(valueMap.get("URL"), expectedUrlElements, "Неверный URL");
 
         valueMap = streetNamesScreen.goToRecommendationsPage();
+        screenshot.takeScreenShot("ncaBy_Наименования улиц и элементов улично-дорожной сети- Рекомендации по принятию решений");
         assertEqualsContinue(valueMap.get("Title"), expectedTitleRecommendations, "Неверное название страницы");
         assertEqualsContinue(valueMap.get("Header"), expectedHeaderRecommendations, "Заголовок страницы не соотетствует ожидаемому");
 
@@ -453,10 +484,11 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 14, dataProvider = "taxesBaseData")
     public void goToLandTaxesBase(String expectedUrl) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_LandTaxesBaseScreen taxesBaseScreen = indexScreen.goToNcaBy_LandTaxesBaseScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        LandTaxesBaseScreen taxesBaseScreen = indexScreen.goToNcaBy_LandTaxesBaseScreen();
 
         String pageUrl = taxesBaseScreen.getUrl();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Налоговая база земельного налога");
 
         assertEquals(pageUrl, expectedUrl, "Неверная URL страницы");
     }
@@ -475,11 +507,12 @@ public class NcaByTest extends BaseTest {
     @Test(priority = 15, dataProvider = "electronicalInteractionData")
     public void goToElectronicalInteraction(String expectedTitle, String expectedHeader) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_ElectronicalInteractionScreen electronicalInteractionScreen = indexScreen.goToNcaBy_ElectronicalInteractionScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        ElectronicalInteractionScreen electronicalInteractionScreen = indexScreen.goToNcaBy_ElectronicalInteractionScreen();
 
         String pageTitle = electronicalInteractionScreen.getPageTitle();
         String pageHeader = electronicalInteractionScreen.getTextHeader();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Электронное взаимодействие по административным процедурам");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -488,7 +521,7 @@ public class NcaByTest extends BaseTest {
     //------------Test case #12-----------------
 
     @DataProvider
-    public Object[][] supportData() {
+    public Object[][] supportLineData() {
         return new Object[][]{
                 {"Национальное Кадастровое Агентство - Информационные ресурсы и E-услуги - Правила пользования линией технической поддержки support@nca.by",
                         "Правила пользования линией технической поддержки support@nca.by"
@@ -496,14 +529,15 @@ public class NcaByTest extends BaseTest {
         };
     }
 
-    @Test(priority = 16, dataProvider = "supportData")
-    public void goToSupport(String expectedTitle, String expectedHeader) throws IOException {
+    @Test(priority = 16, dataProvider = "supportLineData")
+    public void goToSupportLine(String expectedTitle, String expectedHeader) throws IOException {
 
-        NcaBy_IndexScreen indexScreen = new NcaBy_IndexScreen(driver);
-        NcaBy_SupportLineScreen supportLineScreen = indexScreen.goToNcaBy_SupportLineScreen();
+        IndexScreen indexScreen = new IndexScreen(driver);
+        SupportLineScreen supportLineScreen = indexScreen.goToNcaBy_SupportLineScreen();
 
         String pageTitle = supportLineScreen.getPageTitle();
         String pageHeader = supportLineScreen.getTextHeader();
+        screenshot.takeScreenShot("ncaBy_Отображение страницы- Линия технической поддержки support@nca.by");
 
         assertEquals(pageTitle, expectedTitle, "Названия страниц не совпадают");
         assertEquals(pageHeader, expectedHeader, "Заголовок страницы не соотетствует ожидаемому");

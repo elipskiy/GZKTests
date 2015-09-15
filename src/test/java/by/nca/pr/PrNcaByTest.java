@@ -35,6 +35,8 @@ public class PrNcaByTest extends BaseTest {
         indexScreen.insertDateTransactionOf();
         indexScreen.insertDateTransactionTo();
         indexScreen.scrollDownToFindBtn();
+        //TODO: This is total bullshit
+        Thread.sleep(4000);
         indexScreen.clickFindBtn();
         indexScreen.scrollUpToShowBtn();
         Thread.sleep(500);

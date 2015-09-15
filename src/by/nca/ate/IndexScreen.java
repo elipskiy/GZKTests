@@ -17,12 +17,10 @@ import java.util.List;
 public class IndexScreen extends BaseIndexScreen {
     private static final String MAIN_PAGE_URL = "http://ate.nca.by";
     private DriverWrapper wrapper;
-    PageScreenShot screenShot;
 
     public IndexScreen(WebDriver driver) {
         super(driver, MAIN_PAGE_URL);
         wrapper = new DriverWrapper(driver);
-        screenShot = new PageScreenShot(driver);
     }
 
     //--------Xpath----------
@@ -54,14 +52,6 @@ public class IndexScreen extends BaseIndexScreen {
     private static final String SOATO_CODE_FIND_BUTTON           = "//*[@id='contentFrame']/div[1]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/a/span/span";
     private static final String SOATO_CODE_TABLE                 = "//div[@id='contentFrame']/table/tbody/tr[2]/td/div/table/tbody/tr/td";
     //--------Xpath End------
-
-    public void takeScreen(String name) {
-        try {
-            screenShot.takeScreenShot(name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void login(String username, String password) {
         wrapper.sendKeysByXpath(USERNAME_FIELD, username);

@@ -14,12 +14,10 @@ public class IndexScreen extends BaseIndexScreen {
 
     private static final String MAIN_PAGE_URL = "http://ergi.nca.by";
     private DriverWrapper wrapper;
-    PageScreenShot screenShot;
 
     public IndexScreen(WebDriver driver) {
         super(driver, MAIN_PAGE_URL);
         wrapper = new DriverWrapper(driver);
-        screenShot = new PageScreenShot(driver);
     }
 
     //--------Xpath----------
@@ -41,14 +39,6 @@ public class IndexScreen extends BaseIndexScreen {
     }
     public String getPageUrl() {
         return wrapper.getCurrentUrl();
-    }
-
-    public void takeScreen(String name) {
-        try {
-            screenShot.takeScreenShot(name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void login(String username, String password) {

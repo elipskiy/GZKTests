@@ -3,6 +3,7 @@ package by.nca;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import utils.PageScreenShot;
 import utils.WebDriverStarter;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class BaseTest extends Assert {
     protected static WebDriver driver;
     protected static final Logger log = Logger.getLogger(BaseTest.class);
     protected ArrayList<String> errors = new ArrayList<>();
+    protected PageScreenShot screenshot = new PageScreenShot(driver);
 
     public BaseTest() {
         nullErrors();
@@ -30,6 +32,7 @@ public class BaseTest extends Assert {
         try {
             WebDriverStarter starter = new WebDriverStarter();
             driver = starter.getDriver();
+            screenshot = new PageScreenShot(driver);
         } catch (IOException e) {
             log.debug(e.getMessage());
             e.printStackTrace();

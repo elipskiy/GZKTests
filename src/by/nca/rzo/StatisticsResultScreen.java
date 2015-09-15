@@ -14,21 +14,13 @@ public class StatisticsResultScreen extends WrappedScreen {
 
     StatisticsResultScreen(WebDriver driver) {
         super(driver);
-        screenShot = new PageScreenShot(driver);
     }
-
-    PageScreenShot screenShot;
 
     //--------Xpath----------
     private static final String CRITERIA_TABLE = "//table[@class='captb']/tbody/tr/td";
     //--------Xpath End------
 
-    public List getTableElements(String screenshotName) {
-        try {
-            screenShot.takeScreenShot(screenshotName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public List getTableElements() {
         List list = getTextOfElements(CRITERIA_TABLE);
         list.remove(list.size() - 1);
         return list;

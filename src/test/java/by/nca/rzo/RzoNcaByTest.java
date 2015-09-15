@@ -62,7 +62,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         CommonStatisticsScreen commonStatistics = indexScreen.goToCommonStatistics();
         StatisticsResultScreen statisticsResult = commonStatistics.getStatistics(estimationObject, from, till, city);
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Общая_статистика-_общие_параметры");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Общая_статистика-_общие_параметры");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -93,7 +94,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         CommonStatisticsScreen commonStatistics = indexScreen.goToCommonStatistics();
         StatisticsResultScreen statisticsResult = commonStatistics.getEvaluationMethodStatistics(estimationMethod);
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Общая_статистика-_методы_оценки");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Общая_статистика-_методы_оценки");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -127,7 +129,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         SearchScreen searchScreen = indexScreen.goToSearch();
         StatisticsResultScreen statisticsResult = searchScreen.getSearchResults(propertyRestictions, propertyPurpose);
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Поиск-_объект_оценки");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Поиск-_объект_оценки");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -160,7 +163,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         SearchScreen searchScreen = indexScreen.goToSearch();
         StatisticsResultScreen statisticsResult = searchScreen.getPropertyCost(currency);
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Поиск-_стоимость_объекта_оценки");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Поиск-_стоимость_объекта_оценки");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -189,7 +193,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         SearchScreen searchScreen = indexScreen.goToSearch();
         StatisticsResultScreen statisticsResult = searchScreen.getEstimationMethods();
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Поиск- методы оценки");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Поиск- методы оценки");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -221,7 +226,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         SearchScreen searchScreen = indexScreen.goToSearch();
         StatisticsResultScreen statisticsResult = searchScreen.getAdditionalData(from, to);
-        List pageElements = statisticsResult.getTableElements("rzoRcaBy_Поиск- дополнительные данные");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoRcaBy_Поиск- дополнительные данные");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -253,7 +259,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         SearchScreen searchScreen = indexScreen.goToSearch();
         StatisticsResultScreen statisticsResult = searchScreen.getCommonSearchParameters(from, to);
-        List pageElements = statisticsResult.getTableElements("rzoNcaBy_Поиск- общие параметры");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoNcaBy_Поиск- общие параметры");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }
@@ -265,7 +272,7 @@ public class RzoNcaByTest extends BaseTest {
                 {
                         Arrays.asList(
                             "Дата анализа:",
-                            "14.09.2015",
+                            getTodayDate(),
                             "Критерии анализа:",
                             "Не включая заключения до 01.05.2011",
                             "Объект оценки",
@@ -281,7 +288,8 @@ public class RzoNcaByTest extends BaseTest {
         indexScreen.login(USERNAME, PASSWORD);
         AnalysisScreen analysisScreen = indexScreen.goToAnalysis();
         StatisticsResultScreen statisticsResult = analysisScreen.getAnalysis();
-        List pageElements = statisticsResult.getTableElements("rzoNcaBy_Анализ- анализируемые показатели");
+        List pageElements = statisticsResult.getTableElements();
+        screenshot.takeScreenShot("rzoNcaBy_Анализ- анализируемые показатели");
 
         assertEquals(pageElements, expectedElements, "Элементы таблицы не соответствуют ожидаемым");
     }

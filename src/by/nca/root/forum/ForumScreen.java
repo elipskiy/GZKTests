@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 10.09.2015.
  */
-public class NcaBy_ForumScreen extends WrappedScreen {
+public class ForumScreen extends WrappedScreen {
 
-    public NcaBy_ForumScreen(WebDriver driver) {
+    public ForumScreen(WebDriver driver) {
         super(driver);
     }
 

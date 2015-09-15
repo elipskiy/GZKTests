@@ -12,9 +12,9 @@ import java.util.Map;
 /**
  * Created by mugi4_000 on 10.09.2015.
  */
-public class NcaBy_StreetNamesScreen extends WrappedScreen {
+public class StreetNamesScreen extends WrappedScreen {
 
-    public NcaBy_StreetNamesScreen(WebDriver driver) {
+    public StreetNamesScreen(WebDriver driver) {
         super(driver);
         screenShot = new PageScreenShot(driver);
         loadPage = new LoadPage();

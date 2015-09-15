@@ -1,18 +1,18 @@
 package by.nca.root;
 
-import by.nca.root.certificationSystem.NcaBy_CertificationSystemScreen;
-import by.nca.root.electronicalAppeal.NcaBy_SendElectronicalAppealScreen;
-import by.nca.root.forum.NcaBy_ForumScreen;
-import by.nca.root.publicCadastralMap.NcaBy_PublicCadastralMapScreen;
+import by.nca.root.certificationSystem.CertificationSystemScreen;
+import by.nca.root.electronicalAppeal.SendElectronicalAppealScreen;
+import by.nca.root.forum.ForumScreen;
+import by.nca.root.publicCadastralMap.PublicCadastralMapScreen;
 import by.nca.BaseIndexScreen;
-import by.nca.root.about.NcaBy_AboutCompanyScreen;
-import by.nca.root.databaseStatistics.NcaBy_DatabaseStatisticsScreen;
-import by.nca.root.electronicalInteraction.NcaBy_ElectronicalInteractionScreen;
-import by.nca.root.electronicalServices.NcaBy_ElectronicalServicesScreen;
-import by.nca.root.registrationOrganizations.NcaBy_RegistrationOrganizationsScreen;
-import by.nca.root.streetNames.NcaBy_StreetNamesScreen;
-import by.nca.root.supportLine.NcaBy_SupportLineScreen;
-import by.nca.root.taxesBase.NcaBy_LandTaxesBaseScreen;
+import by.nca.root.about.AboutCompanyScreen;
+import by.nca.root.databaseStatistics.DatabaseStatisticsScreen;
+import by.nca.root.electronicalInteraction.ElectronicalInteractionScreen;
+import by.nca.root.electronicalServices.ElectronicalServicesScreen;
+import by.nca.root.registrationOrganizations.RegistrationOrganizationsScreen;
+import by.nca.root.streetNames.StreetNamesScreen;
+import by.nca.root.supportLine.SupportLineScreen;
+import by.nca.root.taxesBase.LandTaxesBaseScreen;
 import utils.DriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,11 +20,11 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_IndexScreen extends BaseIndexScreen {
+public class IndexScreen extends BaseIndexScreen {
 
     private static final String MAIN_PAGE_URL = "http://nca.by/";
 
-    public NcaBy_IndexScreen(WebDriver driver) {
+    public IndexScreen(WebDriver driver) {
         super(driver, MAIN_PAGE_URL);
     }
 
@@ -44,65 +44,65 @@ public class NcaBy_IndexScreen extends BaseIndexScreen {
 
     //--------Xpath End------
 
-    public NcaBy_AboutCompanyScreen goToNcaBy_AboutCompany() {
+    public AboutCompanyScreen goToNcaBy_AboutCompany() {
         driver.findElement(By.xpath(ABOUT_COMPANY_LINK)).click();
-        return new NcaBy_AboutCompanyScreen(driver);
+        return new AboutCompanyScreen(driver);
     }
 
-    public NcaBy_RegistrationOrganizationsScreen goToNcaBy_RegistrationOrganizations() {
+    public RegistrationOrganizationsScreen goToNcaBy_RegistrationOrganizations() {
         driver.findElement(By.xpath(REGISTRATION_ORGANIZATIONS_LINK)).click();
-        return new NcaBy_RegistrationOrganizationsScreen(driver);
+        return new RegistrationOrganizationsScreen(driver);
     }
 
-    public NcaBy_CertificationSystemScreen goToNcaBy_CertificationScreen() {
+    public CertificationSystemScreen goToNcaBy_CertificationScreen() {
         driver.findElement(By.xpath(CERTIFICATION_SYSTEM_LINK)).click();
-        return new NcaBy_CertificationSystemScreen(driver);
+        return new CertificationSystemScreen(driver);
     }
 
-    public NcaBy_ForumScreen goToNcaBy_ForumScreen() {
+    public ForumScreen goToNcaBy_ForumScreen() {
         driver.findElement(By.xpath(FORUM_LINK)).click();
-        return new NcaBy_ForumScreen(driver);
+        return new ForumScreen(driver);
     }
 
-    public NcaBy_SendElectronicalAppealScreen goToNcaBy_ElectronicalAppealScreen() {
+    public SendElectronicalAppealScreen goToNcaBy_ElectronicalAppealScreen() {
         driver.findElement(By.xpath(ELECTRONICAL_APPEAL_LINK)).click();
         new DriverWrapper(driver).switchWindow(1);
-        return new NcaBy_SendElectronicalAppealScreen(driver);
+        return new SendElectronicalAppealScreen(driver);
     }
 
-    public NcaBy_DatabaseStatisticsScreen goToNcaBy_DatabaseStatisticsScreen() {
+    public DatabaseStatisticsScreen goToNcaBy_DatabaseStatisticsScreen() {
         driver.findElement(By.xpath(BASE_STATISTICS_LINK)).click();
-        return new NcaBy_DatabaseStatisticsScreen(driver);
+        return new DatabaseStatisticsScreen(driver);
     }
 
-    public NcaBy_ElectronicalServicesScreen goToNcaBy_ElectronicalServicesScreen() {
+    public ElectronicalServicesScreen goToNcaBy_ElectronicalServicesScreen() {
         driver.findElement(By.xpath(ELECTRONICAL_SERVICES_LINK)).click();
-        return new NcaBy_ElectronicalServicesScreen(driver);
+        return new ElectronicalServicesScreen(driver);
     }
 
-    public NcaBy_PublicCadastralMapScreen goToNcaBy_PublicCadastralMapScreen() {
+    public PublicCadastralMapScreen goToNcaBy_PublicCadastralMapScreen() {
         driver.findElement(By.xpath(PUBLIC_CADASTRAL_MAP)).click();
-        return new NcaBy_PublicCadastralMapScreen(driver);
+        return new PublicCadastralMapScreen(driver);
     }
 
-    public NcaBy_StreetNamesScreen goToNcaBy_StreetNamesScreen() {
+    public StreetNamesScreen goToNcaBy_StreetNamesScreen() {
         driver.findElement(By.xpath(STREET_NAMES_LINK)).click();
-        return new NcaBy_StreetNamesScreen(driver);
+        return new StreetNamesScreen(driver);
     }
 
-    public NcaBy_LandTaxesBaseScreen goToNcaBy_LandTaxesBaseScreen() {
+    public LandTaxesBaseScreen goToNcaBy_LandTaxesBaseScreen() {
         driver.findElement(By.xpath(LAND_TAXES_LINK)).click();
-        return new NcaBy_LandTaxesBaseScreen(driver);
+        return new LandTaxesBaseScreen(driver);
     }
 
-    public NcaBy_ElectronicalInteractionScreen goToNcaBy_ElectronicalInteractionScreen() {
+    public ElectronicalInteractionScreen goToNcaBy_ElectronicalInteractionScreen() {
         driver.findElement(By.xpath(ELECTRONICAL_INTERACTION_LINK)).click();
-        return new NcaBy_ElectronicalInteractionScreen(driver);
+        return new ElectronicalInteractionScreen(driver);
     }
 
-    public NcaBy_SupportLineScreen goToNcaBy_SupportLineScreen() {
+    public SupportLineScreen goToNcaBy_SupportLineScreen() {
         driver.findElement(By.xpath(SUPPORT_LINK)).click();
-        return new NcaBy_SupportLineScreen(driver);
+        return new SupportLineScreen(driver);
     }
 
 }

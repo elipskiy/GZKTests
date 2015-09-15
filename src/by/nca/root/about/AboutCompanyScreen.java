@@ -12,15 +12,15 @@ import java.util.List;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_AboutCompanyScreen {
-    public NcaBy_AboutCompanyScreen(WebDriver driver) {
+public class AboutCompanyScreen {
+    public AboutCompanyScreen(WebDriver driver) {
         new LoadPage().waitForPageLoaded(driver);
         wrapper = new DriverWrapper(driver);
     }
 
     DriverWrapper wrapper;
 
-    public static final Logger log = Logger.getLogger(NcaBy_AboutCompanyScreen.class);
+    public static final Logger log = Logger.getLogger(AboutCompanyScreen.class);
 
     //--------Xpath----------
     private static final String TEXT_HEADER = "//div[@class='chiter']/b/p[1]/strong";
@@ -48,23 +48,23 @@ public class NcaBy_AboutCompanyScreen {
         return listOfParagraphs;
     }
 
-    public NcaBy_DirectorshipScreen goToNcaBy_Directorship() {
+    public DirectorshipScreen goToNcaBy_Directorship() {
         wrapper.clickByXpath(DIRECTORSHIP_LINK);
-        return new NcaBy_DirectorshipScreen(wrapper.getDriver());
+        return new DirectorshipScreen(wrapper.getDriver());
     }
 
-    public NcaBy_StructureScreen goToNcaBy_Structure() {
+    public StructureScreen goToNcaBy_Structure() {
         wrapper.clickByXpath(STRUCTURE_LINK);
-        return new NcaBy_StructureScreen(wrapper.getDriver());
+        return new StructureScreen(wrapper.getDriver());
     }
 
-    public NcaBy_ObjectivesAndFunctionsScreen goToNcaBy_ObjectivesAndFunctions() {
+    public ObjectivesAndFunctionsScreen goToNcaBy_ObjectivesAndFunctions() {
         wrapper.clickByXpath(FUNCTIONS_LINK);
-        return new NcaBy_ObjectivesAndFunctionsScreen(wrapper.getDriver());
+        return new ObjectivesAndFunctionsScreen(wrapper.getDriver());
     }
 
-    public NcaBy_LegalBaseScreen goToNcaBy_LegalBase() {
+    public LegalBaseScreen goToNcaBy_LegalBase() {
         wrapper.clickByXpath(LEGAL_LINK);
-        return new NcaBy_LegalBaseScreen(wrapper.getDriver());
+        return new LegalBaseScreen(wrapper.getDriver());
     }
 }

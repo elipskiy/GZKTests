@@ -22,15 +22,13 @@ public class SupportNcaByTest extends BaseTest {
     public void getNewDriver()	{
         getDriver();
         nullErrors();
-        screenshot = new PageScreenShot(driver);
+
     }
 
     @AfterMethod
     public void closeBrowser()	{
         driver.quit();
     }
-
-    private PageScreenShot screenshot;
 
     private final static String USERNAME = "Test TOR";
     private final static String PASSWORD = "123456";

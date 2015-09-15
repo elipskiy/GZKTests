@@ -8,15 +8,15 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by mugi4_000 on 06.09.2015.
  */
-public class NcaBy_StructureScreen {
-    public NcaBy_StructureScreen(WebDriver driver) {
+public class StructureScreen {
+    public StructureScreen(WebDriver driver) {
         new LoadPage().waitForPageLoaded(driver);
         wrapper = new DriverWrapper(driver);
     }
 
     DriverWrapper wrapper;
 
-    public static final Logger log = Logger.getLogger(NcaBy_StructureScreen.class);
+    public static final Logger log = Logger.getLogger(StructureScreen.class);
 
     //--------Xpath----------
     private static final String TEXT_HEADER = "//div[@class='path']/h1/a";
