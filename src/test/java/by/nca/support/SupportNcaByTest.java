@@ -53,7 +53,7 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaEdScreen ncaEdScreen = new SupportNcaEdScreen(driver);
         Map map = ncaEdScreen.login(USERNAME, PASSWORD);
         Thread.sleep(500);
-        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEd");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Elements"), expectedElements, "Элементы бокового меню не соответствуют ожидаемым");
@@ -77,7 +77,7 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaSgdScreen ncaSgdScreen = new SupportNcaSgdScreen(driver);
         Map map = ncaSgdScreen.login(USERNAME, PASSWORD);
         Thread.sleep(500);
-        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSgd");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
@@ -101,7 +101,7 @@ public class SupportNcaByTest extends BaseTest {
         SupportNcaLibScreen ncaLibScreen = new SupportNcaLibScreen(driver);
         Map map = ncaLibScreen.login(USERNAME, PASSWORD);
         Thread.sleep(500);
-        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
+        screenshot.takeScreenShot("Отображение страницы SupportNcaLib");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
