@@ -457,6 +457,10 @@ public class DriverWrapper {
         }
         log.info("Ожидаем, когда статус станет 0: " + status);
     }
+
+    public void switchFrame(WebElement name) {
+        driver.switchTo().frame(name);
+    }
     //************Wating status *****End*****
 
     //************JSON

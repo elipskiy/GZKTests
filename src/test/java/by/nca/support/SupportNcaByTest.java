@@ -1,10 +1,12 @@
 package by.nca.support;
 
 import by.nca.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.PageScreenShot;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,12 +22,15 @@ public class SupportNcaByTest extends BaseTest {
     public void getNewDriver()	{
         getDriver();
         nullErrors();
+        screenshot = new PageScreenShot(driver);
     }
 
     @AfterMethod
     public void closeBrowser()	{
         driver.quit();
     }
+
+    private PageScreenShot screenshot;
 
     private final static String USERNAME = "Test TOR";
     private final static String PASSWORD = "123456";
@@ -37,16 +42,18 @@ public class SupportNcaByTest extends BaseTest {
         return new Object[][]{
                 {
                         "ГУП НКА / Архивная открытая информационная система",
-                        Arrays.asList("Документация", "Последние документы", "Несформированные дела", "Поиск", "Сформировать отчёт")
+                        Arrays.asList("Дата помещения", "Заголовок", "Кадастровый/Инвентарный номер", "Адрес", "ФИО архивиста")
                 }
         };
     }
 
     @Test(priority = 1, dataProvider = "EdNcaData")
-    public void goToEdNca(String expectedTitle, List expectedElements) throws IOException {
+    public void goToEdNca(String expectedTitle, List expectedElements) throws IOException, InterruptedException {
 
         SupportNcaEdScreen ncaEdScreen = new SupportNcaEdScreen(driver);
         Map map = ncaEdScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEd");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Elements"), expectedElements, "Элементы бокового меню не соответствуют ожидаемым");
@@ -65,35 +72,78 @@ public class SupportNcaByTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = "SgdNcaData")
-    public void goToSgdNca(String expectedTitle, String expectedHeader) throws IOException {
+    public void goToSgdNca(String expectedTitle, String expectedHeader) throws IOException, InterruptedException {
 
         SupportNcaSgdScreen ncaSgdScreen = new SupportNcaSgdScreen(driver);
         Map map = ncaSgdScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSgd");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
     }
 
-    //------------Test case #1-----------------
+    //------------Test case #3-----------------
 
     @DataProvider
     public Object[][] LibNcaData() {
         return new Object[][]{
                 {
-                        "ГУП НКА / Открытая архивная информационная система",
+                        "ГУП НКА / Архивная открытая информационная система",
                         "Реестр"
                 }
         };
     }
 
-    @Test(priority = 0, dataProvider = "LibNcaData")
-    public void goToLibNca(String expectedTitle, String expectedHeader) throws IOException {
+    @Test(priority = 3, dataProvider = "LibNcaData")
+    public void goToLibNca(String expectedTitle, String expectedHeader) throws IOException, InterruptedException {
 
         SupportNcaLibScreen ncaLibScreen = new SupportNcaLibScreen(driver);
         Map map = ncaLibScreen.login(USERNAME, PASSWORD);
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaLib");
 
         assertEquals(map.get("Title"), expectedTitle, "Названия страниц не совпадают");
         assertEquals(map.get("Header"), expectedHeader, "Заголовок страницы не соотетствует ожидаемому");
+    }
+
+    //------------Test case #4-----------------
+
+    @Test(priority = 4)
+    public void viewPage_SupportNcaEs() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / NKA_E-Services / Предоставление сведений из ЕГРНИ исполнительным и распорядительным органам";
+        SupportNcaEs_IndexScreen indexScreen = (new SupportNcaEs_IndexScreen(driver));
+        SupportNcaEs_MainScreen mainScreen = indexScreen.goToSupportNcaEs_MainScreen();
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaEs");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    //------------Test case #5-----------------
+
+    @Test(priority = 5)
+    public void viewPage_SupportNcaSf() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / NKA_SF";
+        SupportNcaSf_IndexScreen indexScreen = (new SupportNcaSf_IndexScreen(driver));
+        SupportNcaSf_MainScreen mainScreen = indexScreen.goToSupportNcaSf_MainScreen();
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    //------------Test case #6-----------------
+
+    @Test(priority = 6)
+    public void viewPage_SupportNcaRs() throws InterruptedException, IOException {
+        String expectedResult = "ГУП НКА / Автоматизированная информационная система государственной регистрации заключений об оценке недвижимого имущества";
+        SupportNcaRs_IndexScreen indexScreen = (new SupportNcaRs_IndexScreen(driver));
+        SupportNcaRs_MainScreen mainScreen = indexScreen.goToSupportNcaRs_MainScreen();
+        Thread.sleep(500);
+        screenshot.takeScreenShot("Отображение страницы SupportNcaSf");
+        String actualResult = mainScreen.getTitle();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
 }
