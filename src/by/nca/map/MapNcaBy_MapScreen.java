@@ -22,7 +22,7 @@ public class MapNcaBy_MapScreen {
     }
 
     //--------Xpath----------
-    private static final String LAND_CHECKBOX = "//*[@id=\"dijit_form_CheckBox_36\"]";
+    private static final String LAND_CHECKBOX = "//*[@id=\"TOCNode_4\"]/div[1]/span/span[@data-dojo-attach-point='checkContainerNode']/div/input";
     private static final String ZOOM_ON_BTN = "//*[@id=\"map_zoom_slider\"]/tbody/tr[1]/td[2]/div";
     //--------End Xpath------
 

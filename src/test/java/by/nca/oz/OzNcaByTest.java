@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.PageScreenShot;
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class OzNcaByTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void SearchForRealEstateObject() throws IOException {
+    public void SearchForRealEstateObject() throws IOException, InterruptedException {
 
         String orgId = "500";
         String num = "6248";
@@ -43,7 +44,10 @@ public class OzNcaByTest extends BaseTest {
         searchByInvNumScreen.clickFindBtn();
         searchByInvNumScreen.clickCopying();
         searchByInvNumScreen.login(name, key);
-        boolean actualResult = driver.getPageSource().contains("500000000008002041");
+        Thread.sleep(5000);
+        PageScreenShot screenshot = new PageScreenShot(driver);
+        screenshot.takeScreenShot("Oz_Поиск по объекту недвижимого имущества");
+        boolean actualResult = driver.getPageSource().contains("500/C-6248");
 
         Assert.assertEquals(actualResult,true);
     }
