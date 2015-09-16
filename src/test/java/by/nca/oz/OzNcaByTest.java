@@ -33,7 +33,6 @@ public class OzNcaByTest extends BaseTest {
 
         String name = "Monitoring";
         String key = "cdE!b4952q";
-        String expectedResult = "500000000008002041";
 
         IndexScreen indexScreen = (new IndexScreen(driver));
         indexScreen.selectInvNum();
@@ -44,7 +43,7 @@ public class OzNcaByTest extends BaseTest {
         searchByInvNumScreen.clickFindBtn();
         searchByInvNumScreen.clickCopying();
         searchByInvNumScreen.login(name, key);
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         PageScreenShot screenshot = new PageScreenShot(driver);
         screenshot.takeScreenShot("Oz_Поиск по объекту недвижимого имущества");
         boolean actualResult = driver.getPageSource().contains("500/C-6248");
